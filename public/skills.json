@@ -1,16 +1,50 @@
 [
   {
-    "name": "Conductor Agent Skill",
-    "description": "A skill that helps you manage software projects using the Conductor methodology.",
-    "githubRepoUrl": "https://github.com/example/conductor-skill",
-    "tags": ["productivity", "workflow", "conductor"],
-    "author": "Conductor Team"
+    "name": "Apple Container Skill",
+    "description": "Enables agents to interact with the Apple Container CLI to manage containers, images, volumes, and networks on macOS.",
+    "githubRepoUrl": "https://github.com/gabeosx/apple-container-skill",
+    "tags": ["macos", "container", "cli", "system-management"]
   },
   {
-    "name": "Weather Assistant",
-    "description": "Provides real-time weather updates and forecasts.",
-    "githubRepoUrl": "https://github.com/example/weather-skill",
-    "tags": ["utility", "weather"],
-    "author": "SkyWatcher"
+    "name": "PDF Skill",
+    "description": "Tools for extracting text and data from PDF files.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/pdf",
+    "tags": ["anthropic", "pdf", "document-processing"]
+  },
+  {
+    "name": "DOCX Skill",
+    "description": "Tools for reading and writing DOCX files.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/docx",
+    "tags": ["anthropic", "docx", "document-processing"]
+  },
+  {
+    "name": "PPTX Skill",
+    "description": "Tools for reading and writing PPTX files.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/pptx",
+    "tags": ["anthropic", "pptx", "presentation"]
+  },
+  {
+    "name": "XLSX Skill",
+    "description": "Tools for reading and writing Excel (XLSX) files.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
+    "tags": ["anthropic", "excel", "spreadsheet", "data-analysis"]
+  },
+  {
+    "name": "Skill Creator",
+    "description": "A meta-skill for creating new Agent Skills.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
+    "tags": ["anthropic", "meta", "development"]
+  },
+  {
+    "name": "Slack GIF Creator",
+    "description": "A fun skill to create GIFs for Slack.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator",
+    "tags": ["anthropic", "slack", "media"]
+  },
+  {
+    "name": "Template Skill",
+    "description": "A template for creating new skills in the Anthropics ecosystem.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/template-skill",
+    "tags": ["anthropic", "template", "example"]
   }
 ]
