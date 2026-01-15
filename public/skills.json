@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Conductor Agent Skill",
+    "description": "A skill that helps you manage software projects using the Conductor methodology.",
+    "githubRepoUrl": "https://github.com/example/conductor-skill",
+    "tags": ["productivity", "workflow", "conductor"],
+    "author": "Conductor Team"
+  },
+  {
+    "name": "Weather Assistant",
+    "description": "Provides real-time weather updates and forecasts.",
+    "githubRepoUrl": "https://github.com/example/weather-skill",
+    "tags": ["utility", "weather"],
+    "author": "SkyWatcher"
+  }
+]
