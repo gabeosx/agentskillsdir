@@ -8,7 +8,7 @@
     - [x] Write Zod schema for skill metadata [ea12d4c]
     - [x] Create a sample `skills.json` with initial data [ea12d4c]
     - [x] Implement a validation script (TDD: Write test to verify schema) [ea12d4c]
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Project Scaffolding & Registry Setup' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Project Scaffolding & Registry Setup' (Protocol in workflow.md) [817b1b8]
 
 ## Phase 2: Core UI & Search Implementation
 - [ ] Task: Implement the main layout and Terminal-themed Search Box
