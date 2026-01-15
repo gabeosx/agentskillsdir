@@ -32,6 +32,6 @@
 - [x] Task: Final aesthetic refinements and accessibility check [684a41a]
     - [x] Apply final terminal-themed UI tweaks (ASCII art, scanlines) [684a41a]
     - [x] Ensure full keyboard navigability [684a41a]
-- [ ] Task: Configure Cloudflare Pages deployment
-    - [ ] Add deployment script and configuration
+- [x] Task: Configure Cloudflare Pages deployment [774693f]
+    - [x] Add deployment script and configuration [774693f]
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Final Polishing & Deployment Prep' (Protocol in workflow.md)
