@@ -11,9 +11,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Project Scaffolding & Registry Setup' (Protocol in workflow.md) [817b1b8]
 
 ## Phase 2: Core UI & Search Implementation
-- [ ] Task: Implement the main layout and Terminal-themed Search Box
-    - [ ] Write tests for search filtering logic
-    - [ ] Build the layout shell and search component
+- [x] Task: Implement the main layout and Terminal-themed Search Box [817b1b8]
+    - [x] Write tests for search filtering logic [817b1b8]
+    - [x] Build the layout shell and search component [817b1b8]
 - [ ] Task: Implement the Skill List and real-time filtering
     - [ ] Write tests for list rendering and filtering
     - [ ] Build the skill card/row components

@@ -1,6 +1,31 @@
+import { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
+import { Skill, SkillsListSchema } from './schemas/skill';
+import { filterSkills } from './utils/search';
 
 function App() {
+  const [allSkills, setAllSkills] = useState<Skill[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadSkills() {
+      try {
+        const response = await fetch('/skills.json');
+        const data = await response.json();
+        const validatedSkills = SkillsListSchema.parse(data);
+        setAllSkills(validatedSkills);
+      } catch (error) {
+        console.error('Failed to load skills:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadSkills();
+  }, []);
+
+  const filteredSkills = filterSkills(allSkills, searchQuery);
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] font-sans selection:bg-white/20">
       <div className="max-w-5xl mx-auto px-6 py-20">
@@ -26,6 +51,8 @@ function App() {
             <input 
               type="text" 
               placeholder="Search for skills..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-transparent text-lg text-white placeholder-[#525252] focus:outline-none"
             />
             <div className="hidden sm:flex items-center space-x-1 text-xs text-[#525252] font-mono border border-white/5 rounded px-1.5 py-0.5">
@@ -35,27 +62,46 @@ function App() {
           </div>
         </div>
 
-        {/* Grid Preview (Mock) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="group relative bg-[#111] border border-white/5 rounded-xl p-6 hover:border-white/10 transition-all hover:bg-[#161616]">
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-xl">
-                  {i === 1 ? '⚡️' : i === 2 ? '🌤️' : '🤖'}
+        {/* Grid */}
+        {isLoading ? (
+          <div className="flex justify-center py-20">
+            <div className="w-6 h-6 border-2 border-white/10 border-t-white/40 rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredSkills.map((skill, index) => (
+              <div 
+                key={index} 
+                className="group relative bg-[#111] border border-white/5 rounded-xl p-6 hover:border-white/10 transition-all hover:bg-[#161616]"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-xl">
+                    {skill.name.includes('Weather') ? '🌤️' : '⚡️'}
+                  </div>
+                  <div className="text-xs text-[#525252] font-mono">v1.0.0</div>
                 </div>
-                <div className="text-xs text-[#525252] font-mono">v1.0.{i}</div>
+                <h3 className="text-lg font-medium text-[#ededed] mb-2 group-hover:text-white transition-colors">
+                  {skill.name}
+                </h3>
+                <p className="text-sm text-[#a1a1a1] line-clamp-2 mb-4">
+                  {skill.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {skill.tags?.map(tag => (
+                    <span key={tag} className="text-[10px] uppercase tracking-wider font-bold text-[#525252] border border-white/5 px-1.5 py-0.5 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-lg font-medium text-[#ededed] mb-2 group-hover:text-white transition-colors">
-                {i === 1 ? 'Conductor Agent' : i === 2 ? 'Weather Assistant' : 'Github Copilot'}
-              </h3>
-              <p className="text-sm text-[#a1a1a1] line-clamp-2">
-                {i === 1 
-                  ? 'A skill that helps you manage software projects using the Conductor methodology.' 
-                  : 'Provides real-time weather updates and forecasts for any location.'}
-              </p>
-            </div>
-          ))}
-        </div>
+            ))}
+            {filteredSkills.length === 0 && (
+              <div className="col-span-full text-center py-20 text-[#525252]">
+                No skills found matching your search.
+              </div>
+            )}
+          </div>
+        )}
         
       </div>
     </div>
