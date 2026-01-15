@@ -1,4 +1,4 @@
-import { Skill } from '../schemas/skill';
+import type { Skill } from '../schemas/skill';
 
 export function filterSkills(skills: Skill[], query: string): Skill[] {
   const normalizedQuery = query.toLowerCase().trim();

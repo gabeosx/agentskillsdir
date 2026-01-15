@@ -20,11 +20,13 @@ const mockSkills = [
 ]
 
 // Mock fetch
-global.fetch = vi.fn(() =>
+vi.stubGlobal('fetch', vi.fn(() =>
   Promise.resolve({
     json: () => Promise.resolve(mockSkills),
+    ok: true,
+    status: 200,
   })
-) as any
+));
 
 test('renders title and filters skills', async () => {
   render(<App />)
@@ -41,6 +43,7 @@ test('renders title and filters skills', async () => {
   fireEvent.change(searchInput, { target: { value: 'Weather' } })
   
   expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
+  expect(screen.getByText('utility')).toBeInTheDocument()
   expect(screen.queryByText('Conductor Agent')).not.toBeInTheDocument()
   
   // Search for something that doesn't exist

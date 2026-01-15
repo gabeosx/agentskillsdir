@@ -1,22 +1,28 @@
 import { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
-import { Skill, SkillsListSchema } from './schemas/skill';
+import { SkillsListSchema } from './schemas/skill';
+import type { Skill } from './schemas/skill';
 import { filterSkills } from './utils/search';
 
 function App() {
   const [allSkills, setAllSkills] = useState<Skill[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadSkills() {
       try {
         const response = await fetch('/skills.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         const validatedSkills = SkillsListSchema.parse(data);
         setAllSkills(validatedSkills);
       } catch (error) {
         console.error('Failed to load skills:', error);
+        setError(error instanceof Error ? error.message : 'Unknown error occurred');
       } finally {
         setIsLoading(false);
       }
@@ -63,7 +69,12 @@ function App() {
         </div>
 
         {/* Grid */}
-        {isLoading ? (
+        {error ? (
+             <div className="flex flex-col items-center justify-center py-20 text-red-500">
+                <p className="text-xl font-bold mb-2">Error loading skills</p>
+                <p className="font-mono text-sm opacity-80">{error}</p>
+             </div>
+        ) : isLoading ? (
           <div className="flex justify-center py-20">
             <div className="w-6 h-6 border-2 border-white/10 border-t-white/40 rounded-full animate-spin"></div>
           </div>

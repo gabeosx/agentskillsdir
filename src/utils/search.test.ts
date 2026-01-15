@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { filterSkills } from './search';
-import { Skill } from '../schemas/skill';
+import type { Skill } from '../schemas/skill';
 
 const mockSkills: Skill[] = [
   {
