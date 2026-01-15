@@ -103,3 +103,25 @@ test('skill cards are accessible buttons', async () => {
   expect(buttons.length).toBeGreaterThanOrEqual(2)
   expect(buttons[0]).toHaveTextContent(/Weather Assistant/i)
 })
+
+test('can close the detail modal', async () => {
+  render(<App />)
+
+  await waitFor(() => {
+    expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
+  })
+
+  fireEvent.click(screen.getByText('Weather Assistant'))
+
+  await waitFor(() => {
+    expect(screen.getByRole('dialog')).toBeVisible()
+  })
+
+  // Click the close button using its aria-label
+  const closeButton = screen.getByRole('button', { name: /close modal/i })
+  fireEvent.click(closeButton)
+
+  await waitFor(() => {
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
+})

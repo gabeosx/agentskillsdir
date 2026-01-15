@@ -160,6 +160,7 @@ function App() {
             <div className="relative w-full max-w-2xl bg-[#111] border border-white/10 rounded-2xl shadow-2xl p-8 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
               <button 
                 onClick={handleCloseModal}
+                aria-label="Close modal"
                 className="absolute top-4 right-4 p-2 text-[#a1a1a1] hover:text-white hover:bg-white/5 rounded-full transition-colors"
               >
                 <X className="w-5 h-5" />
