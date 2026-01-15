@@ -72,7 +72,7 @@ test('renders title and filters skills', async () => {
   })
   expect(screen.getByText('Conductor Agent')).toBeInTheDocument()
 
-  const searchInput = screen.getByPlaceholderText(/Search for skills.../i)
+  const searchInput = screen.getByPlaceholderText(/SEARCH_SKILLS --QUERY/i)
   
   // Search for "Weather"
   fireEvent.change(searchInput, { target: { value: 'Weather' } })
@@ -104,8 +104,8 @@ test('clicking a skill card opens the detail modal with correct info', async () 
     // Check content within modal
     expect(within(dialog).getByText('Weather Assistant')).toBeInTheDocument()
     expect(within(dialog).getByText('Provides weather updates.')).toBeInTheDocument()
-    expect(within(dialog).getByText('By Sky')).toBeInTheDocument()
-    expect(within(dialog).getByText(/999 stars/)).toBeInTheDocument()
+    expect(within(dialog).getByText('AUTHOR: SKY')).toBeInTheDocument()
+    expect(within(dialog).getByText('999')).toBeInTheDocument()
   })
 })
 
@@ -118,36 +118,36 @@ test('skill cards are accessible buttons', async () => {
 
   // Should find buttons for the skills
   const buttons = screen.getAllByRole('button')
-  // We expect at least the skill cards to be buttons.
-  // Note: If there are other buttons (like "View on GitHub" inside modal), they aren't visible yet.
-  // But wait, are there other buttons on the main page?
-  // The search input is not a button.
-  // The "Command+K" is a div.
-  // So we expect 2 buttons for the 2 mock skills.
+  // We expect at least the skill cards to be buttons + 1 for Skip to Content if it's rendered as button?
+  // Actually skip to content is an <a>.
+  // Skill cards are buttons.
   expect(buttons.length).toBeGreaterThanOrEqual(2)
-  expect(buttons[0]).toHaveTextContent(/Weather Assistant/i)
+  expect(buttons.some(b => b.textContent?.includes('Weather Assistant'))).toBe(true)
 })
 
-test('can close the detail modal', async () => {
-  render(<App />)
+test('can close the detail modal with button or Escape key', async () => {
+  const { unmount } = render(<App />)
 
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
   })
 
+  // 1. Close with button
   fireEvent.click(screen.getByText('Weather Assistant'))
-
-  await waitFor(() => {
-    expect(screen.getByRole('dialog')).toBeVisible()
-  })
-
-  // Click the close button using its aria-label
+  await waitFor(() => expect(screen.getByRole('dialog')).toBeVisible())
+  
   const closeButton = screen.getByRole('button', { name: /close modal/i })
   fireEvent.click(closeButton)
+  await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
 
-  await waitFor(() => {
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
-  })
+  // 2. Close with Escape key
+  fireEvent.click(screen.getByText('Weather Assistant'))
+  await waitFor(() => expect(screen.getByRole('dialog')).toBeVisible())
+  
+  fireEvent.keyDown(window, { key: 'Escape' })
+  await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
+  
+  unmount()
 })
 
 test('handles GitHub API errors gracefully', async () => {
@@ -177,8 +177,8 @@ test('handles GitHub API errors gracefully', async () => {
 
   await waitFor(() => {
     expect(screen.getByRole('dialog')).toBeVisible()
-    // Should NOT show stars if API fails
-    expect(screen.queryByText(/stars/)).not.toBeInTheDocument()
+    // Should NOT show repo stars section if API fails
+    expect(screen.queryByText(/REPO_STARS/i)).not.toBeInTheDocument()
   })
 })
 
@@ -210,7 +210,7 @@ test('caches GitHub stars in localStorage', async () => {
   fireEvent.click(screen.getByText('Weather Assistant'))
 
   await waitFor(() => {
-    expect(screen.getByText(/123 stars/)).toBeInTheDocument()
+    expect(screen.getByText('123')).toBeInTheDocument()
   })
 
   expect(fetchMock).toHaveBeenCalledWith(expect.stringContaining('api.github.com'))
@@ -222,7 +222,7 @@ test('caches GitHub stars in localStorage', async () => {
   
   fireEvent.click(screen.getByText('Weather Assistant'))
   await waitFor(() => {
-    expect(screen.getByText(/123 stars/)).toBeInTheDocument()
+    expect(screen.getByText('123')).toBeInTheDocument()
   })
 
   // Should NOT have fetched again
