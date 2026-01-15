@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search } from 'lucide-react';
+import { Search, X, Github, Star } from 'lucide-react';
 import { SkillsListSchema } from './schemas/skill';
 import type { Skill } from './schemas/skill';
 import { filterSkills } from './utils/search';
@@ -9,6 +9,8 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
+  const [stars, setStars] = useState<number | null>(null);
 
   useEffect(() => {
     async function loadSkills() {
@@ -30,7 +32,42 @@ function App() {
     loadSkills();
   }, []);
 
+  useEffect(() => {
+    if (!selectedSkill?.githubRepoUrl) {
+      setStars(null);
+      return;
+    }
+
+    const fetchStars = async () => {
+      try {
+        const url = new URL(selectedSkill.githubRepoUrl);
+        const pathParts = url.pathname.split('/').filter(Boolean);
+        if (pathParts.length >= 2) {
+          const owner = pathParts[0];
+          const repo = pathParts[1];
+          const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+          if (response.ok) {
+            const data = await response.json();
+            setStars(typeof data.stargazers_count === 'number' ? data.stargazers_count : null);
+          } else {
+            setStars(null);
+          }
+        }
+      } catch (e) {
+        console.error("Failed to fetch stars", e);
+        setStars(null);
+      }
+    };
+
+    fetchStars();
+  }, [selectedSkill]);
+
   const filteredSkills = filterSkills(allSkills, searchQuery);
+
+  const handleCloseModal = () => {
+    setSelectedSkill(null);
+    setStars(null);
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] font-sans selection:bg-white/20">
@@ -81,9 +118,11 @@ function App() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredSkills.map((skill, index) => (
-              <div 
+              <button 
                 key={index} 
-                className="group relative bg-[#111] border border-white/5 rounded-xl p-6 hover:border-white/10 transition-all hover:bg-[#161616]"
+                type="button"
+                onClick={() => setSelectedSkill(skill)}
+                className="w-full text-left group relative bg-[#111] border border-white/5 rounded-xl p-6 hover:border-white/10 transition-all hover:bg-[#161616] cursor-pointer"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-xl">
@@ -104,7 +143,7 @@ function App() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </button>
             ))}
             {filteredSkills.length === 0 && (
               <div className="col-span-full text-center py-20 text-[#525252]">
@@ -114,6 +153,75 @@ function App() {
           </div>
         )}
         
+        {/* Modal */}
+        {selectedSkill && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true">
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleCloseModal}></div>
+            <div className="relative w-full max-w-2xl bg-[#111] border border-white/10 rounded-2xl shadow-2xl p-8 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+              <button 
+                onClick={handleCloseModal}
+                className="absolute top-4 right-4 p-2 text-[#a1a1a1] hover:text-white hover:bg-white/5 rounded-full transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex flex-col space-y-6">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl">
+                      {selectedSkill.name.includes('Weather') ? '🌤️' : '⚡️'}
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-semibold text-white mb-1">{selectedSkill.name}</h2>
+                      <div className="flex items-center space-x-3 text-sm text-[#a1a1a1]">
+                        {selectedSkill.author && (
+                          <span className="flex items-center">
+                            By {selectedSkill.author}
+                          </span>
+                        )}
+                        <span>•</span>
+                        <span className="font-mono">v1.0.0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <p className="text-[#d1d1d1] leading-relaxed text-lg">
+                    {selectedSkill.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {selectedSkill.tags?.map(tag => (
+                      <span key={tag} className="text-xs uppercase tracking-wider font-bold text-[#737373] bg-white/5 border border-white/5 px-2.5 py-1 rounded-md">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between">
+                  <a 
+                    href={selectedSkill.githubRepoUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-white text-black rounded-lg font-medium hover:bg-[#ededed] transition-colors"
+                  >
+                    <Github className="w-4 h-4 mr-2" />
+                    View on GitHub
+                  </a>
+                  
+                  {typeof stars === 'number' && (
+                    <div className="flex items-center text-[#a1a1a1] font-mono text-sm bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
+                      <Star className="w-4 h-4 text-yellow-500 mr-2 fill-yellow-500" />
+                      {stars.toLocaleString()} stars
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
