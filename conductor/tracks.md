@@ -9,5 +9,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: update README.md to give an overview of the project, how to contribute, and link to the deployed version at skillindex.dev**
+- [x] **Track: update README.md to give an overview of the project, how to contribute, and link to the deployed version at skillindex.dev**
 *Link: [./tracks/update_readme_20260115/](./tracks/update_readme_20260115/)*

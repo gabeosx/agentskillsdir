@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# Agent Skills Directory
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A searchable directory and machine-readable registry for LLM skills.
+Deployed at [skillindex.dev](https://skillindex.dev).
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Agent Skills Directory serves as a centralized hub for discovering and adopting Agent Skills—standardized tools that enhance LLM workflows. It serves three primary audiences:
 
-## React Compiler
+-   **AI Developers & Platform Users:** To discover ready-made skills.
+-   **Skill Creators:** To share and standardize their extensions.
+-   **Tool Builders:** To leverage the machine-readable registry for integrations.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The project features a **Searchable Directory** for easy discovery and a **Machine-Readable Registry** (`skills.json`) that acts as the single source of truth.
 
-## Expanding the ESLint configuration
+## Tech Stack & Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **Frontend:** React (Vite) with TypeScript.
+-   **Styling:** Tailwind CSS and Lucide React.
+-   **Data:** `skills.json` validated by Zod.
+-   **Deployment:** Cloudflare Pages.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Local Development Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/your-username/agentskillsdir.git
+cd agentskillsdir
+
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Running Locally
+```bash
+# Start the development server
+npm run dev
 ```
+
+### Building for Production
+```bash
+# Build the application
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+## Contributing
+
+We welcome contributions to the Agent Skills Directory!
+
+### Adding a New Skill
+1. **Fork** the repository.
+2. Add your skill to `public/skills.json`. Ensure it follows the schema (Name, Description, GitHub URL are mandatory).
+3. **Validate** your changes:
+   ```bash
+   npm run validate-skills
+   ```
+4. **Submit a Pull Request** with a brief description of the skill.
+
+## License
+
+This project is licensed under the MIT License.
