@@ -56,7 +56,18 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] font-sans selection:bg-white/20">
-      <div className="max-w-5xl mx-auto px-6 py-20">
+      <div className="max-w-5xl mx-auto px-6 pt-8 pb-20">
+        <div className="flex justify-end mb-8">
+          <a 
+            href="https://github.com/gabeosx/agentskillsdir" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-sm text-[#a1a1a1] hover:text-white transition-colors group"
+          >
+            <Github className="w-5 h-5" />
+            <span className="font-medium">View on GitHub</span>
+          </a>
+        </div>
         
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16 space-y-6">
