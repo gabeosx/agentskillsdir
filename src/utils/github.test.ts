@@ -60,11 +60,15 @@ describe('fetchGitHubStars', () => {
   
   it('handles network errors gracefully', async () => {
     const mockRepoUrl = 'https://github.com/test-owner/test-repo';
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     
     (globalThis.fetch as Mock).mockRejectedValueOnce(new Error('Network error'));
     
     const stars = await fetchGitHubStars(mockRepoUrl);
     expect(stars).toBeNull();
+    expect(consoleSpy).toHaveBeenCalledWith('Error fetching GitHub stars:', expect.any(Error));
+    
+    consoleSpy.mockRestore();
   });
 
   it('uses cached value for subsequent calls', async () => {
