@@ -14,9 +14,9 @@
 - [x] Task: Implement the main layout and Terminal-themed Search Box [e2b5e39]
     - [x] Write tests for search filtering logic [e2b5e39]
     - [x] Build the layout shell and search component [e2b5e39]
-- [ ] Task: Implement the Skill List and real-time filtering
-    - [ ] Write tests for list rendering and filtering
-    - [ ] Build the skill card/row components
+- [x] Task: Implement the Skill List and real-time filtering [e2b5e39]
+    - [x] Write tests for list rendering and filtering [e2b5e39]
+    - [x] Build the skill card/row components [e2b5e39]
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Core UI & Search Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Detail View & Dynamic Data
