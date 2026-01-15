@@ -1,6 +1,6 @@
 # Implementation Plan - Fix Skill Detail Modal
 
-## Phase 1: Diagnosis and Fix
+## Phase 1: Diagnosis and Fix [checkpoint: 1177078]
 - [x] Task: Reproduce the bug with a failing test (TDD Red) [e552a36]
     - [x] Locate the existing tests or create a new test file (e.g., `src/App.test.tsx`).
     - [x] Write a test case that renders the skill list, simulates a click on a skill card, and asserts that the modal appears.
