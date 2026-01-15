@@ -1,9 +1,9 @@
 # Implementation Plan: MVP - Searchable Directory & Schema Validation
 
 ## Phase 1: Project Scaffolding & Registry Setup
-- [ ] Task: Initialize React (Vite) project with TypeScript and Tailwind CSS
-    - [ ] Run Vite scaffold command
-    - [ ] Configure Tailwind with monospaced fonts and terminal colors
+- [~] Task: Initialize React (Vite) project with TypeScript and Tailwind CSS
+    - [~] Run Vite scaffold command
+    - [~] Configure Tailwind with monospaced fonts and terminal colors
 - [ ] Task: Define the Zod schema and initial `skills.json`
     - [ ] Write Zod schema for skill metadata
     - [ ] Create a sample `skills.json` with initial data

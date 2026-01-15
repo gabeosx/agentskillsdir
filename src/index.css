@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --color-terminal-bg: #0a0a0a;
+  --color-terminal-green: #00ff00;
+  --color-terminal-amber: #ffbf00;
+  --color-terminal-text: #e0e0e0;
+  --color-terminal-border: #333333;
+}
+
+@layer base {
+  :root {
+    background-color: var(--color-terminal-bg);
+    color: var(--color-terminal-text);
+    font-family: var(--font-mono);
+  }
+
+  body {
+    @apply antialiased min-h-screen;
+  }
+}
