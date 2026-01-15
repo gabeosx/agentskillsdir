@@ -11,7 +11,7 @@ The Agent Skills Directory serves three distinct groups:
 - **Tool Builders:** Developers who leverage the machine-readable registry to build integrations, CLIs, or IDE plugins.
 
 ## 2. Core Features
-- **Searchable Directory:** A focused, "no-nonsense" website featuring a simple, universal search box. It queries all relevant fields (name, description, tags) to surface results instantly.
+- **Searchable Directory:** A focused, "no-nonsense" website featuring a simple, universal search box and a pre-populated registry of high-quality skills (e.g., Anthropics collections). It queries all relevant fields (name, description, tags) to surface results instantly.
 - **Machine-Readable Registry:** A centralized `skills.json` file serves as the single source of truth. This file powers the website and provides a reliable, discoverable endpoint for third-party tools.
 - **Contribution Workflow:** A Git-based submission process where users fork the repository and submit PRs.
 - **Schema Validation:** Automated enforcement of the metadata schema to ensure the integrity of the `skills.json` registry.
