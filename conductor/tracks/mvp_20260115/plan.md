@@ -1,6 +1,6 @@
 # Implementation Plan: MVP - Searchable Directory & Schema Validation
 
-## Phase 1: Project Scaffolding & Registry Setup
+## Phase 1: Project Scaffolding & Registry Setup [checkpoint: ac18fb0]
 - [x] Task: Initialize React (Vite) project with TypeScript and Tailwind CSS [add1ff9]
     - [x] Run Vite scaffold command [add1ff9]
     - [x] Configure Tailwind with monospaced fonts and terminal colors [add1ff9]
