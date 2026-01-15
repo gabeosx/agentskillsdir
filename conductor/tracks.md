@@ -11,8 +11,3 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 - [x] **Track: the modal window that is supposed to provide details for each skill is not working**
 *Link: [./tracks/fix_skill_modal_20260115/](./tracks/fix_skill_modal_20260115/)*
-
----
-
-- [x] **Track: Populate Directory with Initial Skills**
-*Link: [./tracks/populate_initial_skills_20260115/](./tracks/populate_initial_skills_20260115/)*
