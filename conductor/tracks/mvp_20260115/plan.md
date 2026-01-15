@@ -10,14 +10,14 @@
     - [x] Implement a validation script (TDD: Write test to verify schema) [ea12d4c]
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Project Scaffolding & Registry Setup' (Protocol in workflow.md) [817b1b8]
 
-## Phase 2: Core UI & Search Implementation
+## Phase 2: Core UI & Search Implementation [checkpoint: 02a2433]
 - [x] Task: Implement the main layout and Terminal-themed Search Box [e2b5e39]
     - [x] Write tests for search filtering logic [e2b5e39]
     - [x] Build the layout shell and search component [e2b5e39]
 - [x] Task: Implement the Skill List and real-time filtering [e2b5e39]
     - [x] Write tests for list rendering and filtering [e2b5e39]
     - [x] Build the skill card/row components [e2b5e39]
-- [~] Task: Conductor - User Manual Verification 'Phase 2: Core UI & Search Implementation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Core UI & Search Implementation' (Protocol in workflow.md) [02a2433]
 
 ## Phase 3: Detail View & Dynamic Data
 - [ ] Task: Implement the Skill Detail Modal
