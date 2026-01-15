@@ -4,10 +4,10 @@
 - [x] Task: Initialize React (Vite) project with TypeScript and Tailwind CSS [add1ff9]
     - [x] Run Vite scaffold command [add1ff9]
     - [x] Configure Tailwind with monospaced fonts and terminal colors [add1ff9]
-- [x] Task: Define the Zod schema and initial `skills.json` [ffbf02e]
-    - [x] Write Zod schema for skill metadata [ffbf02e]
-    - [x] Create a sample `skills.json` with initial data [ffbf02e]
-    - [x] Implement a validation script (TDD: Write test to verify schema) [ffbf02e]
+- [x] Task: Define the Zod schema and initial `skills.json` [ea12d4c]
+    - [x] Write Zod schema for skill metadata [ea12d4c]
+    - [x] Create a sample `skills.json` with initial data [ea12d4c]
+    - [x] Implement a validation script (TDD: Write test to verify schema) [ea12d4c]
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Project Scaffolding & Registry Setup' (Protocol in workflow.md)
 
 ## Phase 2: Core UI & Search Implementation
