@@ -1,6 +1,30 @@
 import { render, screen, fireEvent, waitFor, within } from '@testing-library/react'
 import App from './App'
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi, beforeEach } from 'vitest'
+
+// Mock localStorage
+const localStorageMock = (() => {
+  let store: Record<string, string> = {};
+  return {
+    getItem: vi.fn((key: string) => store[key] || null),
+    setItem: vi.fn((key: string, value: string) => {
+      store[key] = value.toString();
+    }),
+    clear: vi.fn(() => {
+      store = {};
+    }),
+    removeItem: vi.fn((key: string) => {
+      delete store[key];
+    }),
+  };
+})();
+
+vi.stubGlobal('localStorage', localStorageMock);
+
+beforeEach(() => {
+  localStorageMock.clear();
+  vi.clearAllMocks();
+});
 
 const mockSkills = [
   {
@@ -124,4 +148,84 @@ test('can close the detail modal', async () => {
   await waitFor(() => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
+})
+
+test('handles GitHub API errors gracefully', async () => {
+  // Mock fetch to return error for github
+  vi.stubGlobal('fetch', vi.fn((url: string | URL | Request) => {
+    const urlStr = url.toString();
+    if (urlStr.includes('api.github.com')) {
+      return Promise.resolve({
+        ok: false,
+        status: 404,
+      });
+    }
+    return Promise.resolve({
+      json: () => Promise.resolve(mockSkills),
+      ok: true,
+      status: 200,
+    });
+  }));
+
+  render(<App />)
+
+  await waitFor(() => {
+    expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
+  })
+
+  fireEvent.click(screen.getByText('Weather Assistant'))
+
+  await waitFor(() => {
+    expect(screen.getByRole('dialog')).toBeVisible()
+    // Should NOT show stars if API fails
+    expect(screen.queryByText(/stars/)).not.toBeInTheDocument()
+  })
+})
+
+test('caches GitHub stars in localStorage', async () => {
+  const fetchMock = vi.fn((url: string | URL | Request) => {
+    const urlStr = url.toString();
+    if (urlStr.includes('api.github.com')) {
+      return Promise.resolve({
+        json: () => Promise.resolve({ stargazers_count: 123 }),
+        ok: true,
+        status: 200,
+      });
+    }
+    return Promise.resolve({
+      json: () => Promise.resolve(mockSkills),
+      ok: true,
+      status: 200,
+    });
+  });
+  vi.stubGlobal('fetch', fetchMock);
+
+  render(<App />)
+
+  await waitFor(() => {
+    expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
+  })
+
+  // Open modal
+  fireEvent.click(screen.getByText('Weather Assistant'))
+
+  await waitFor(() => {
+    expect(screen.getByText(/123 stars/)).toBeInTheDocument()
+  })
+
+  expect(fetchMock).toHaveBeenCalledWith(expect.stringContaining('api.github.com'))
+  const firstCallCount = fetchMock.mock.calls.filter(call => call[0].toString().includes('api.github.com')).length
+
+  // Close and reopen
+  fireEvent.click(screen.getByRole('button', { name: /close modal/i }))
+  await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
+  
+  fireEvent.click(screen.getByText('Weather Assistant'))
+  await waitFor(() => {
+    expect(screen.getByText(/123 stars/)).toBeInTheDocument()
+  })
+
+  // Should NOT have fetched again
+  const secondCallCount = fetchMock.mock.calls.filter(call => call[0].toString().includes('api.github.com')).length
+  expect(secondCallCount).toBe(firstCallCount)
 })

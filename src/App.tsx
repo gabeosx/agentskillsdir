@@ -3,6 +3,7 @@ import { Search, X, Github, Star } from 'lucide-react';
 import { SkillsListSchema } from './schemas/skill';
 import type { Skill } from './schemas/skill';
 import { filterSkills } from './utils/search';
+import { fetchGitHubStars } from './utils/github';
 
 function App() {
   const [allSkills, setAllSkills] = useState<Skill[]>([]);
@@ -38,28 +39,12 @@ function App() {
       return;
     }
 
-    const fetchStars = async () => {
-      try {
-        const url = new URL(selectedSkill.githubRepoUrl);
-        const pathParts = url.pathname.split('/').filter(Boolean);
-        if (pathParts.length >= 2) {
-          const owner = pathParts[0];
-          const repo = pathParts[1];
-          const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
-          if (response.ok) {
-            const data = await response.json();
-            setStars(typeof data.stargazers_count === 'number' ? data.stargazers_count : null);
-          } else {
-            setStars(null);
-          }
-        }
-      } catch (e) {
-        console.error("Failed to fetch stars", e);
-        setStars(null);
-      }
+    const loadStars = async () => {
+      const count = await fetchGitHubStars(selectedSkill.githubRepoUrl);
+      setStars(count);
     };
 
-    fetchStars();
+    loadStars();
   }, [selectedSkill]);
 
   const filteredSkills = filterSkills(allSkills, searchQuery);
