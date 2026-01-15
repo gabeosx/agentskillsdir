@@ -20,10 +20,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Core UI & Search Implementation' (Protocol in workflow.md) [02a2433]
 
 ## Phase 3: Detail View & Dynamic Data
-- [ ] Task: Implement the Skill Detail Modal
-    - [ ] Write tests for modal open/close and data display
-    - [ ] Build the modal component
-- [ ] Task: Integrate GitHub Stars fetching
+- [x] Task: Implement the Skill Detail Modal [a9d8086]
+    - [x] Write tests for modal open/close and data display [a9d8086]
+    - [x] Build the modal component [a9d8086]
+- [~] Task: Integrate GitHub Stars fetching
     - [ ] Write tests for the GitHub API service (mocking fetch)
     - [ ] Implement browser-side star count fetching with caching
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Detail View & Dynamic Data' (Protocol in workflow.md)
