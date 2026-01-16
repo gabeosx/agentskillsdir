@@ -3,8 +3,15 @@
     "name": "Apple Container Skill",
     "packageName": "apple-container-skill",
     "description": "Enables agents to interact with the Apple Container CLI to manage containers, images, volumes, and networks on macOS.",
-    "githubRepoUrl": "https://github.com/gabeosx/apple-container-skill",
+    "githubRepoUrl": "https://github.com/gabeosx/agent-skills/tree/main/skills/apple-container-skill",
     "tags": ["macos", "container", "cli", "system-management"]
+  },
+  {
+    "name": "DevContainer Helper",
+    "packageName": "devcontainer-helper",
+    "description": "Create, configure, and manage devcontainer.json environments.",
+    "githubRepoUrl": "https://github.com/gabeosx/agent-skills/tree/main/skills/devcontainer-helper",
+    "tags": ["devcontainer", "docker", "configuration", "development"]
   },
   {
     "name": "PDF Skill",

@@ -1,4 +1,3 @@
-
 import { describe, it, expect } from 'vitest';
 import skills from '../../public/skills.json';
 
@@ -6,7 +5,13 @@ describe('Skills Registry', () => {
   it('should include the Apple Container Skill', () => {
     const appleSkill = skills.find(s => s.name === 'Apple Container Skill' || s.githubRepoUrl.includes('apple-container-skill'));
     expect(appleSkill).toBeDefined();
-    expect(appleSkill?.githubRepoUrl).toBe('https://github.com/gabeosx/apple-container-skill');
+    expect(appleSkill?.githubRepoUrl).toBe('https://github.com/gabeosx/agent-skills/tree/main/skills/apple-container-skill');
+  });
+
+  it('should include the DevContainer Helper Skill', () => {
+      const devContainerSkill = skills.find(s => s.name === 'DevContainer Helper');
+      expect(devContainerSkill).toBeDefined();
+      expect(devContainerSkill?.githubRepoUrl).toBe('https://github.com/gabeosx/agent-skills/tree/main/skills/devcontainer-helper');
   });
 
   it('should include Anthropics PDF skill', () => {
