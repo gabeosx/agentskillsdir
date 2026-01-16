@@ -5,12 +5,14 @@ import type { Skill } from '../schemas/skill';
 const mockSkills: Skill[] = [
   {
     name: 'React Skill',
+    packageName: 'react-skill',
     description: 'Frontend library',
     githubRepoUrl: 'https://github.com/facebook/react',
     tags: ['ui', 'js']
   },
   {
     name: 'Vitest Helper',
+    packageName: 'vitest-helper',
     description: 'Testing utility',
     githubRepoUrl: 'https://github.com/vitest-dev/vitest',
     tags: ['test']
@@ -24,6 +26,12 @@ describe('filterSkills', () => {
 
   it('filters by name', () => {
     const result = filterSkills(mockSkills, 'react');
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe('React Skill');
+  });
+
+  it('filters by packageName', () => {
+    const result = filterSkills(mockSkills, 'react-skill');
     expect(result).toHaveLength(1);
     expect(result[0].name).toBe('React Skill');
   });

@@ -1,48 +1,56 @@
 [
   {
     "name": "Apple Container Skill",
+    "packageName": "apple-container-skill",
     "description": "Enables agents to interact with the Apple Container CLI to manage containers, images, volumes, and networks on macOS.",
     "githubRepoUrl": "https://github.com/gabeosx/apple-container-skill",
     "tags": ["macos", "container", "cli", "system-management"]
   },
   {
     "name": "PDF Skill",
+    "packageName": "pdf",
     "description": "Tools for extracting text and data from PDF files.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/pdf",
     "tags": ["anthropic", "pdf", "document-processing"]
   },
   {
     "name": "DOCX Skill",
+    "packageName": "docx",
     "description": "Tools for reading and writing DOCX files.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/docx",
     "tags": ["anthropic", "docx", "document-processing"]
   },
   {
     "name": "PPTX Skill",
+    "packageName": "pptx",
     "description": "Tools for reading and writing PPTX files.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/pptx",
     "tags": ["anthropic", "pptx", "presentation"]
   },
   {
     "name": "XLSX Skill",
+    "packageName": "xlsx",
     "description": "Tools for reading and writing Excel (XLSX) files.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
     "tags": ["anthropic", "excel", "spreadsheet", "data-analysis"]
   },
   {
     "name": "Skill Creator",
+    "packageName": "skill-creator",
     "description": "A meta-skill for creating new Agent Skills.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
     "tags": ["anthropic", "meta", "development"]
   },
   {
     "name": "Slack GIF Creator",
+    "packageName": "slack-gif-creator",
     "description": "A fun skill to create GIFs for Slack.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator",
     "tags": ["anthropic", "slack", "media"]
   },
   {
     "name": "Template Skill",
+    "packageName": "template-skill",
     "description": "A template for creating new skills in the Anthropics ecosystem.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/template-skill",
     "tags": ["anthropic", "template", "example"]

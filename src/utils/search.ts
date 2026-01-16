@@ -7,9 +7,10 @@ export function filterSkills(skills: Skill[], query: string): Skill[] {
   
   return skills.filter(skill => {
     const nameMatch = skill.name.toLowerCase().includes(normalizedQuery);
+    const packageNameMatch = skill.packageName.toLowerCase().includes(normalizedQuery);
     const descMatch = skill.description.toLowerCase().includes(normalizedQuery);
     const tagMatch = skill.tags?.some(tag => tag.toLowerCase().includes(normalizedQuery));
     
-    return nameMatch || descMatch || tagMatch;
+    return nameMatch || packageNameMatch || descMatch || tagMatch;
   });
 }

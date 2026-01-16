@@ -124,7 +124,7 @@ function App() {
                   <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-xl">
                     {skill.name.includes('Weather') ? '🌤️' : '⚡️'}
                   </div>
-                  <div className="text-xs text-[#525252] font-mono">v1.0.0</div>
+                  <div className="text-xs text-[#525252] font-mono">{skill.packageName}</div>
                 </div>
                 <h3 className="text-lg font-medium text-[#ededed] mb-2 group-hover:text-white transition-colors">
                   {skill.name}
@@ -177,7 +177,7 @@ function App() {
                           </span>
                         )}
                         <span>•</span>
-                        <span className="font-mono">v1.0.0</span>
+                        <span className="font-mono">{selectedSkill.packageName}</span>
                       </div>
                     </div>
                   </div>

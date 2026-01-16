@@ -29,6 +29,7 @@ beforeEach(() => {
 const mockSkills = [
   {
     name: 'Weather Assistant',
+    packageName: 'weather-assistant',
     description: 'Provides weather updates.',
     githubRepoUrl: 'https://github.com/example/weather',
     tags: ['utility'],
@@ -36,6 +37,7 @@ const mockSkills = [
   },
   {
     name: 'Conductor Agent',
+    packageName: 'conductor-agent',
     description: 'Project management tool.',
     githubRepoUrl: 'https://github.com/example/conductor',
     tags: ['productivity'],

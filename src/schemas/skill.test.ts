@@ -5,6 +5,7 @@ describe('SkillSchema', () => {
   it('validates a correct skill object', () => {
     const validSkill = {
       name: 'Test Skill',
+      packageName: 'test-skill',
       description: 'A test skill for LLMs',
       githubRepoUrl: 'https://github.com/user/repo',
       tags: ['test', 'llm'],
@@ -17,6 +18,17 @@ describe('SkillSchema', () => {
 
   it('fails if name is missing', () => {
     const invalidSkill = {
+      packageName: 'test-skill',
+      description: 'A test skill for LLMs',
+      githubRepoUrl: 'https://github.com/user/repo'
+    };
+    expect(() => SkillSchema.parse(invalidSkill)).toThrow();
+  });
+
+  it('fails if packageName is invalid', () => {
+    const invalidSkill = {
+      name: 'Test Skill',
+      packageName: 'Test Skill', // Spaces and uppercase not allowed
       description: 'A test skill for LLMs',
       githubRepoUrl: 'https://github.com/user/repo'
     };
@@ -26,6 +38,7 @@ describe('SkillSchema', () => {
   it('fails if githubRepoUrl is not from github.com', () => {
     const invalidSkill = {
       name: 'Test Skill',
+      packageName: 'test-skill',
       description: 'A test skill for LLMs',
       githubRepoUrl: 'https://gitlab.com/user/repo'
     };
@@ -38,11 +51,13 @@ describe('SkillsListSchema', () => {
     const validSkills = [
       {
         name: 'Skill 1',
+        packageName: 'skill-1',
         description: 'Description 1',
         githubRepoUrl: 'https://github.com/user/repo1'
       },
       {
         name: 'Skill 2',
+        packageName: 'skill-2',
         description: 'Description 2',
         githubRepoUrl: 'https://github.com/user/repo2'
       }
