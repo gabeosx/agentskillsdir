@@ -57,7 +57,16 @@ function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] font-sans selection:bg-white/20">
       <div className="max-w-5xl mx-auto px-6 pt-8 pb-20">
-        <div className="flex justify-end mb-8">
+        <div className="flex justify-between items-center mb-8">
+          <a href="https://www.producthunt.com/products/agent-skills-directory-2?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-agent-skills-directory-2" target="_blank" rel="noopener noreferrer">
+            <img 
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1064211&amp;theme=light&amp;t=1768669132552" 
+              alt="Agent Skills Directory - Share and discover skills for your favorite AI agents | Product Hunt" 
+              style={{ width: '200px', height: '43px' }} 
+              width="200" 
+              height="43" 
+            />
+          </a>
           <a 
             href="https://github.com/gabeosx/agentskillsdir" 
             target="_blank" 

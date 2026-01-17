@@ -3,6 +3,8 @@
 A searchable directory and machine-readable registry for LLM skills.
 Deployed at [skillindex.dev](https://skillindex.dev).
 
+<a href="https://www.producthunt.com/products/agent-skills-directory-2?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-agent-skills-directory-2" target="_blank" rel="noopener noreferrer"><img alt="Agent Skills Directory - Share and discover skills for your favorite AI agents | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1064211&amp;theme=light&amp;t=1768669132552"></a>
+
 ## Project Overview
 
 The Agent Skills Directory serves as a centralized hub for discovering and adopting Agent Skills—standardized tools that enhance LLM workflows. It serves three primary audiences:
