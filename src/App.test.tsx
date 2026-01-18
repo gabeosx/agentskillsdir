@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor, within } from '@testing-library/react'
 import App from './App'
 import { expect, test, vi, beforeEach } from 'vitest'
+import { MemoryRouter } from 'react-router-dom'
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -66,7 +67,7 @@ vi.stubGlobal('fetch', vi.fn((url: string | URL | Request) => {
 }));
 
 test('renders title and filters skills', async () => {
-  render(<App />)
+  render(<MemoryRouter><App /></MemoryRouter>)
   
   // Wait for skills to load
   await waitFor(() => {
@@ -89,7 +90,7 @@ test('renders title and filters skills', async () => {
 })
 
 test('clicking a skill card opens the detail modal with correct info', async () => {
-  render(<App />)
+  render(<MemoryRouter><App /></MemoryRouter>)
 
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
@@ -111,8 +112,22 @@ test('clicking a skill card opens the detail modal with correct info', async () 
   })
 })
 
+test('navigating to /skill/:packageName opens the skill modal', async () => {
+  render(
+    <MemoryRouter initialEntries={['/skill/weather-assistant']}>
+      <App />
+    </MemoryRouter>
+  )
+
+  await waitFor(() => {
+    const dialog = screen.getByRole('dialog')
+    expect(dialog).toBeVisible()
+    expect(within(dialog).getByText('Weather Assistant')).toBeInTheDocument()
+  })
+})
+
 test('skill cards are accessible buttons', async () => {
-  render(<App />)
+  render(<MemoryRouter><App /></MemoryRouter>)
   
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
@@ -121,17 +136,12 @@ test('skill cards are accessible buttons', async () => {
   // Should find buttons for the skills
   const buttons = screen.getAllByRole('button')
   // We expect at least the skill cards to be buttons.
-  // Note: If there are other buttons (like "View on GitHub" inside modal), they aren't visible yet.
-  // But wait, are there other buttons on the main page?
-  // The search input is not a button.
-  // The "Command+K" is a div.
-  // So we expect 2 buttons for the 2 mock skills.
   expect(buttons.length).toBeGreaterThanOrEqual(2)
   expect(buttons[0]).toHaveTextContent(/Weather Assistant/i)
 })
 
 test('can close the detail modal', async () => {
-  render(<App />)
+  render(<MemoryRouter><App /></MemoryRouter>)
 
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
@@ -169,7 +179,7 @@ test('handles GitHub API errors gracefully', async () => {
     });
   }));
 
-  render(<App />)
+  render(<MemoryRouter><App /></MemoryRouter>)
 
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
@@ -202,7 +212,7 @@ test('caches GitHub stars in localStorage', async () => {
   });
   vi.stubGlobal('fetch', fetchMock);
 
-  render(<App />)
+  render(<MemoryRouter><App /></MemoryRouter>)
 
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
