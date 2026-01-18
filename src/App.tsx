@@ -1,17 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Search, X, Github, Star } from 'lucide-react';
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { SkillsListSchema } from './schemas/skill';
 import type { Skill } from './schemas/skill';
 import { filterSkills } from './utils/search';
 import { fetchGitHubStars } from './utils/github';
 
-function App() {
+function SkillDirectory() {
   const [allSkills, setAllSkills] = useState<Skill[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   const [stars, setStars] = useState<number | null>(null);
+  
+  const navigate = useNavigate();
+  const { packageName } = useParams();
 
   useEffect(() => {
     async function loadSkills() {
@@ -33,6 +36,11 @@ function App() {
     loadSkills();
   }, []);
 
+  const selectedSkill = useMemo(() => {
+    if (!packageName || allSkills.length === 0) return null;
+    return allSkills.find(s => s.packageName === packageName) || null;
+  }, [packageName, allSkills]);
+
   useEffect(() => {
     if (!selectedSkill?.githubRepoUrl) {
       setStars(null);
@@ -50,8 +58,12 @@ function App() {
   const filteredSkills = filterSkills(allSkills, searchQuery);
 
   const handleCloseModal = () => {
-    setSelectedSkill(null);
+    navigate('/');
     setStars(null);
+  };
+
+  const handleOpenSkill = (skill: Skill) => {
+    navigate(`/skill/${skill.packageName}`);
   };
 
   return (
@@ -126,7 +138,7 @@ function App() {
               <button 
                 key={index} 
                 type="button"
-                onClick={() => setSelectedSkill(skill)}
+                onClick={() => handleOpenSkill(skill)}
                 className="w-full text-left group relative bg-[#111] border border-white/5 rounded-xl p-6 hover:border-white/10 transition-all hover:bg-[#161616] cursor-pointer"
               >
                 <div className="flex items-start justify-between mb-4">
@@ -231,6 +243,15 @@ function App() {
       </div>
     </div>
   )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<SkillDirectory />} />
+      <Route path="/skill/:packageName" element={<SkillDirectory />} />
+    </Routes>
+  );
 }
 
 export default App
