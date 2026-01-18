@@ -1,6 +1,5 @@
-import { expect, test, vi, describe, beforeEach, afterEach } from 'vitest';
+import { expect, test, vi, describe, beforeEach } from 'vitest';
 import fs from 'fs';
-import path from 'path';
 import { generateSitemap, generateRobotsTxt } from '../../scripts/generate-seo-assets';
 
 // Mock fs and path

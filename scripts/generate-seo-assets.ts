@@ -7,7 +7,6 @@ const __dirname = path.dirname(__filename);
 
 const BASE_URL = 'https://skillindex.dev';
 const PUBLIC_DIR = path.resolve(__dirname, '../public');
-const DIST_DIR = path.resolve(__dirname, '../dist'); // We might want to write to dist during build, or public before build.
 // Writing to public allows it to be copied by vite during build.
 const OUTPUT_DIR = PUBLIC_DIR;
 

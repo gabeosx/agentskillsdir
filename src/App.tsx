@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Search, X, Github, Star } from 'lucide-react';
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { SkillsListSchema } from './schemas/skill';
 import type { Skill } from './schemas/skill';
 import { filterSkills } from './utils/search';
@@ -69,10 +68,17 @@ function SkillDirectory() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] font-sans selection:bg-white/20">
-      <Helmet>
-        <title>{selectedSkill ? `${selectedSkill.name} | Agent Skills Directory` : 'Agent Skills Directory'}</title>
-        <meta name="description" content={selectedSkill ? selectedSkill.description : "The open standard for LLM extensions. Discover, share, and integrate skills for your AI agents."} />
-      </Helmet>
+      <title>{selectedSkill ? `${selectedSkill.name} | Agent Skills Directory` : 'Agent Skills Directory'}</title>
+      <meta name="description" content={selectedSkill ? selectedSkill.description : "The open standard for LLM extensions. Discover, share, and integrate skills for your AI agents."} />
+      
+      {/* Open Graph */}
+      <meta property="og:title" content={selectedSkill ? `${selectedSkill.name} | Agent Skills Directory` : "Agent Skills Directory"} />
+      <meta property="og:description" content={selectedSkill ? selectedSkill.description : "The open standard for LLM extensions. Discover, share, and integrate skills for your AI agents."} />
+      <meta property="og:url" content={selectedSkill ? `https://skillindex.dev/skill/${selectedSkill.packageName}` : "https://skillindex.dev/"} />
+      
+      {/* Twitter */}
+      <meta name="twitter:title" content={selectedSkill ? `${selectedSkill.name} | Agent Skills Directory` : "Agent Skills Directory"} />
+      <meta name="twitter:description" content={selectedSkill ? selectedSkill.description : "The open standard for LLM extensions. Discover, share, and integrate skills for your AI agents."} />
       
       <div className="max-w-5xl mx-auto px-6 pt-8 pb-20">
         <div className="flex justify-between items-center mb-8">
