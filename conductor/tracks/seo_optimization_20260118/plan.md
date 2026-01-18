@@ -6,9 +6,9 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
 - [x] Task: Install and Configure React Router (419eccd)
     - [x] Install `react-router-dom`.
     - [x] Update `main.tsx` to wrap the App in `BrowserRouter`.
-- [ ] Task: Implement Path-Based Routing (TDD Red)
-    - [ ] Create `src/App.test.tsx` (or update existing) to test that navigating to `/skill/pdf` renders the PDF skill detail.
-    - [ ] Verify the test fails because routing is not yet implemented.
+- [x] Task: Implement Path-Based Routing (TDD Red) (6d66f50)
+    - [x] Create `src/App.test.tsx` (or update existing) to test that navigating to `/skill/pdf` renders the PDF skill detail.
+    - [x] Verify the test fails because routing is not yet implemented.
 - [ ] Task: Implement Path-Based Routing (TDD Green)
     - [ ] Refactor `App.tsx` to use `Routes` and `Route`.
     - [ ] Implement a route for `/skill/:packageName` that opens the Skill Modal.
