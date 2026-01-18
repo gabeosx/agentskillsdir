@@ -30,9 +30,9 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
     - [x] Integrate `Helmet` into the skill detail view/modal.
     - [x] Use skill name for the title and description for the meta tag.
     - [x] Verify the tests pass.
-- [ ] Task: Global Social Metadata
-    - [ ] Update `index.html` with base Open Graph and Twitter tags.
-    - [ ] Add a high-quality branded social card image to `public/`.
+- [x] Task: Global Social Metadata (29f01ae)
+    - [x] Update `index.html` with base Open Graph and Twitter tags.
+    - [x] Add a high-quality branded social card image to `public/`.
 - [ ] Task: Conductor - User Manual Verification 'Dynamic Metadata & Social Tags' (Protocol in workflow.md)
 
 ## Phase 3: Automated SEO Assets Generation
