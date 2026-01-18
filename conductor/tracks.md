@@ -15,4 +15,4 @@ This file tracks all major tracks for the project. Each track has its own detail
 ---
 
 - [x] **Track: Optimize the website for SEO, including individual skill URLs, meta tags, social cards, sitemap, and robots.txt.**
-*Link: [./tracks/seo_optimization_20260118/](./tracks/seo_optimization_20260118/)*
+*Link: [./archive/seo_optimization_20260118/](./archive/seo_optimization_20260118/)*
