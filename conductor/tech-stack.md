@@ -9,6 +9,7 @@
 ## 2. Styling & UI
 - **Tailwind CSS:** Utilized for rapid, utility-first styling to achieve the terminal-inspired aesthetic (monospaced fonts, high-contrast colors, sharp borders).
 - **Lucide React:** For minimalist, high-quality icons.
++- **Custom React Hooks:** Used for terminal-inspired animations like the typing effect.
 
 ## 3. Data & Schema Validation
 - **JSON (skills.json):** The central, machine-readable registry and single source of truth.
