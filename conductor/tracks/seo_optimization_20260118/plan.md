@@ -35,7 +35,7 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
     - [x] Add a high-quality branded social card image to `public/`.
 - [x] Task: Conductor - User Manual Verification 'Dynamic Metadata & Social Tags' (Protocol in workflow.md)
 
-## Phase 3: Automated SEO Assets Generation
+## Phase 3: Automated SEO Assets Generation [checkpoint: de53c1c]
 - [x] Task: Create Sitemap and Robots Script (TDD Red) (9ecfd7e)
     - [x] Create a test for a new script `scripts/generate-seo-assets.ts`.
     - [x] Assert that it generates a valid `sitemap.xml` based on `public/skills.json`.
@@ -45,4 +45,4 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
     - [x] Ensure `robots.txt` is generated and points to the sitemap.
     - [x] Update `package.json` build script to run this before `vite build`.
     - [x] Verify the tests pass.
-- [ ] Task: Conductor - User Manual Verification 'Automated SEO Assets Generation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Automated SEO Assets Generation' (Protocol in workflow.md)
