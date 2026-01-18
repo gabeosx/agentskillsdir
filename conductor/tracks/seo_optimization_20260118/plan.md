@@ -26,10 +26,10 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
 - [x] Task: Implement Dynamic Title and Meta Tags (TDD Red) (d504ca7)
     - [x] Create a test that asserts the `<title>` and `<meta name="description">` change when a skill is selected.
     - [x] Verify the test fails.
-- [ ] Task: Implement Dynamic Title and Meta Tags (TDD Green)
-    - [ ] Integrate `Helmet` into the skill detail view/modal.
-    - [ ] Use skill name for the title and description for the meta tag.
-    - [ ] Verify the tests pass.
+- [x] Task: Implement Dynamic Title and Meta Tags (TDD Green) (69888a6)
+    - [x] Integrate `Helmet` into the skill detail view/modal.
+    - [x] Use skill name for the title and description for the meta tag.
+    - [x] Verify the tests pass.
 - [ ] Task: Global Social Metadata
     - [ ] Update `index.html` with base Open Graph and Twitter tags.
     - [ ] Add a high-quality branded social card image to `public/`.
