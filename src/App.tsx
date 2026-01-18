@@ -6,6 +6,51 @@ import type { Skill } from './schemas/skill';
 import { filterSkills } from './utils/search';
 import { fetchGitHubStars } from './utils/github';
 
+function TypingEffect({ words }: { words: string[] }) {
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [reverse, setReverse] = useState(false);
+  const [blink, setBlink] = useState(true);
+
+  // Blinking cursor
+  useEffect(() => {
+    const timeout2 = setTimeout(() => {
+      setBlink((prev) => !prev);
+    }, 500);
+    return () => clearTimeout(timeout2);
+  }, [blink]);
+
+  useEffect(() => {
+    if (index >= words.length) {
+      setIndex(0);
+      return;
+    }
+
+    if (subIndex === words[index].length + 1 && !reverse) {
+      setReverse(true);
+      return;
+    }
+
+    if (subIndex === 0 && reverse) {
+      setReverse(false);
+      setIndex((prev) => (prev + 1) % words.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (reverse ? -1 : 1));
+    }, Math.max(reverse ? 75 : subIndex === words[index].length ? 1000 : 150, Math.random() * 350));
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, index, reverse, words]);
+
+  return (
+    <span className="font-mono text-white/90">
+      {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+    </span>
+  );
+}
+
 function SkillDirectory() {
   const [allSkills, setAllSkills] = useState<Skill[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -15,6 +60,12 @@ function SkillDirectory() {
   
   const navigate = useNavigate();
   const { packageName } = useParams();
+
+  const examplePackages = useMemo(() => {
+    // Get up to 5 random package names from skills, or defaults if empty
+    if (allSkills.length === 0) return ['weather-assistant', 'conductor-agent', 'research-rabbit'];
+    return allSkills.slice(0, 5).map(s => s.packageName);
+  }, [allSkills]);
 
   useEffect(() => {
     async function loadSkills() {
@@ -117,10 +168,18 @@ function SkillDirectory() {
             href="https://github.com/gabeosx/skx" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm font-medium text-white/70 hover:bg-white/10 hover:border-white/20 transition-all group"
+            className="inline-flex items-center space-x-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-white/70 hover:bg-white/10 hover:border-white/20 transition-all group backdrop-blur-sm"
           >
-            <Terminal className="w-4 h-4 text-white/50 group-hover:text-white transition-colors" />
-            <span>Manage skills with <span className="text-white font-mono">skx</span></span>
+            <Terminal className="w-5 h-5 text-white/50 group-hover:text-white transition-colors" />
+            <div className="flex flex-col items-start sm:flex-row sm:items-center sm:space-x-2">
+              <span>Easily manage your agent skills with <span className="text-white font-mono font-bold">skx</span></span>
+              <span className="hidden sm:inline text-white/30">•</span>
+              <div className="flex items-center space-x-2 px-2 py-1 bg-black/30 rounded border border-white/5 text-xs">
+                 <span className="text-green-400 font-mono">$</span>
+                 <span className="font-mono text-white/90">skx install </span>
+                 <TypingEffect words={examplePackages} />
+              </div>
+            </div>
           </a>
         </div>
 

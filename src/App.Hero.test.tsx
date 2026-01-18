@@ -25,12 +25,20 @@ vi.stubGlobal('fetch', vi.fn(() =>
 test('renders skx promotion link in hero section', async () => {
   render(<MemoryRouter><App /></MemoryRouter>)
   
-  // Wait for skills to load (ensuring component is rendered)
+  // Wait for skills to load
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
   })
 
-  const skxLink = screen.getByRole('link', { name: /Manage skills with skx/i })
-  expect(skxLink).toBeInTheDocument()
-  expect(skxLink).toHaveAttribute('href', 'https://github.com/gabeosx/skx')
+  // Check for the new copy
+  const cta = screen.getByText(/Easily manage your agent skills with/i)
+  expect(cta).toBeInTheDocument()
+
+  // Check for the link
+  const link = cta.closest('a')
+  expect(link).toHaveAttribute('href', 'https://github.com/gabeosx/skx')
+  
+  // Check for the typing animation container/text
+  // We expect "skx install" to be part of the animation
+  expect(screen.getByText(/skx install/i)).toBeInTheDocument()
 })
