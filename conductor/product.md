@@ -15,8 +15,9 @@ The Agent Skills Directory serves three distinct groups:
 - **Machine-Readable Registry:** A centralized `skills.json` file serves as the single source of truth. This file powers the website and provides a reliable, discoverable endpoint for third-party tools.
 - **Contribution Workflow:** A Git-based submission process where users fork the repository and submit PRs.
 - **Schema Validation:** Automated enforcement of the metadata schema to ensure the integrity of the `skills.json` registry.
+- **Deep Linking & SEO:** Every skill has a unique, shareable URL (e.g., `/skill/weather-assistant`) with dynamic metadata for rich social media previews.
 - **Client-Side Architecture:** The website is a purely static application running entirely in the browser. It requires no server-side code or backend infrastructure.
-- **Deployment:** The application is optimized for and deployed on **Cloudflare Pages**, ensuring high availability and global performance for the static assets.
+- **Deployment:** The application is optimized for and deployed on **Netlify**, ensuring high availability and global performance for the static assets.
 
 ## 3. Metadata Schema
 To ensure quality and interoperability, every skill submission must adhere to a strict schema:
