@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Search, X, Github, Star, Terminal } from 'lucide-react';
+import { Search, X, Github, Star, Terminal, Copy, Check } from 'lucide-react';
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { SkillsListSchema } from './schemas/skill';
 import type { Skill } from './schemas/skill';
@@ -73,6 +73,7 @@ function SkillDirectory() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [stars, setStars] = useState<number | null>(null);
+  const [copied, setCopied] = useState(false);
   
   const navigate = useNavigate();
   const { packageName } = useParams();
@@ -83,6 +84,16 @@ function SkillDirectory() {
     const skills = allSkills.slice(0, 5).map(s => s.packageName);
     return skills.length > 0 ? skills : defaults;
   }, [allSkills]);
+
+  const handleCopy = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
 
   useEffect(() => {
     async function loadSkills() {
@@ -312,6 +323,36 @@ function SkillDirectory() {
                         {tag}
                       </span>
                     ))}
+                  </div>
+
+                  <div className="mt-8 p-4 bg-black/40 rounded-xl border border-white/5 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2 text-xs font-mono text-[#a1a1a1]">
+                        <Terminal className="w-3.5 h-3.5" />
+                        <span>Install with skx</span>
+                      </div>
+                      <button
+                        onClick={() => handleCopy(`skx install ${selectedSkill.packageName}`)}
+                        className="flex items-center space-x-2 text-xs font-medium text-white/50 hover:text-white transition-colors px-2 py-1 rounded bg-white/5 hover:bg-white/10 border border-white/5"
+                        aria-label="Copy command"
+                      >
+                        {copied ? (
+                          <>
+                            <Check className="w-3.5 h-3.5 text-green-500" />
+                            <span className="text-green-500">Copied!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-3.5 h-3.5" />
+                            <span>Copy</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                    <div className="font-mono text-sm bg-black/40 p-3 rounded-lg border border-white/5 flex items-center space-x-3">
+                       <span className="text-green-400 select-none">$</span>
+                       <span className="text-white/90">skx install {selectedSkill.packageName}</span>
+                    </div>
                   </div>
                 </div>
 

@@ -109,6 +109,40 @@ test('clicking a skill card opens the detail modal with correct info', async () 
     expect(within(dialog).getByText('Provides weather updates.')).toBeInTheDocument()
     expect(within(dialog).getByText('By Sky')).toBeInTheDocument()
     expect(within(dialog).getByText(/999 stars/)).toBeInTheDocument()
+
+    // Check for skx install command
+    expect(within(dialog).getByText(/skx install/i)).toBeInTheDocument()
+    expect(within(dialog).getByText('weather-assistant')).toBeInTheDocument()
+    
+    // Check for copy button
+    const copyButton = within(dialog).getByRole('button', { name: /copy command/i })
+    expect(copyButton).toBeInTheDocument()
+  })
+})
+
+test('clicking copy button in modal copies command and shows feedback', async () => {
+  // Mock clipboard API
+  const writeTextMock = vi.fn().mockResolvedValue(undefined)
+  vi.stubGlobal('navigator', {
+    clipboard: {
+      writeText: writeTextMock
+    }
+  })
+
+  render(<MemoryRouter><App /></MemoryRouter>)
+
+  await waitFor(() => {
+    expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
+  })
+
+  fireEvent.click(screen.getByText('Weather Assistant'))
+
+  await waitFor(async () => {
+    const copyButton = screen.getByRole('button', { name: /copy command/i })
+    fireEvent.click(copyButton)
+    
+    expect(writeTextMock).toHaveBeenCalledWith('skx install weather-assistant')
+    expect(screen.getByText(/copied/i)).toBeInTheDocument()
   })
 })
 
