@@ -27,8 +27,10 @@ function TypingEffect({ words }: { words: string[] }) {
     }
 
     if (subIndex === words[index].length + 1 && !reverse) {
-      setReverse(true);
-      return;
+      const timeout = setTimeout(() => {
+        setReverse(true);
+      }, 2000); // Wait 2s at the end
+      return () => clearTimeout(timeout);
     }
 
     if (subIndex === 0 && reverse) {
@@ -39,13 +41,19 @@ function TypingEffect({ words }: { words: string[] }) {
 
     const timeout = setTimeout(() => {
       setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, Math.max(reverse ? 75 : subIndex === words[index].length ? 1000 : 150, Math.random() * 350));
+    }, reverse ? 40 : 100); // Fixed speeds: 100ms for typing, 40ms for deleting
 
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse, words]);
 
+  // Find the longest word to set a stable width
+  const maxLength = useMemo(() => Math.max(...words.map(w => w.length)), [words]);
+
   return (
-    <span className="font-mono text-white/90">
+    <span 
+      className="inline-block font-mono text-white/90 text-left"
+      style={{ minWidth: `${maxLength + 1}ch` }}
+    >
       {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
     </span>
   );
@@ -62,9 +70,10 @@ function SkillDirectory() {
   const { packageName } = useParams();
 
   const examplePackages = useMemo(() => {
-    // Get up to 5 random package names from skills, or defaults if empty
-    if (allSkills.length === 0) return ['weather-assistant', 'conductor-agent', 'research-rabbit'];
-    return allSkills.slice(0, 5).map(s => s.packageName);
+    const defaults = ['weather-assistant', 'conductor-agent', 'research-rabbit'];
+    if (allSkills.length === 0) return defaults;
+    const skills = allSkills.slice(0, 5).map(s => s.packageName);
+    return skills.length > 0 ? skills : defaults;
   }, [allSkills]);
 
   useEffect(() => {
@@ -168,17 +177,17 @@ function SkillDirectory() {
             href="https://github.com/gabeosx/skx" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-white/70 hover:bg-white/10 hover:border-white/20 transition-all group backdrop-blur-sm"
+            className="flex flex-col items-center space-y-4 px-8 py-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/10 hover:border-white/20 transition-all group backdrop-blur-sm"
           >
-            <Terminal className="w-5 h-5 text-white/50 group-hover:text-white transition-colors" />
-            <div className="flex flex-col items-start sm:flex-row sm:items-center sm:space-x-2">
-              <span>Easily manage your agent skills with <span className="text-white font-mono font-bold">skx</span></span>
-              <span className="hidden sm:inline text-white/30">•</span>
-              <div className="flex items-center space-x-2 px-2 py-1 bg-black/30 rounded border border-white/5 text-xs">
-                 <span className="text-green-400 font-mono">$</span>
-                 <span className="font-mono text-white/90">skx install </span>
-                 <TypingEffect words={examplePackages} />
-              </div>
+            <div className="flex items-center space-x-3">
+              <Terminal className="w-5 h-5 text-white/50 group-hover:text-white transition-colors" />
+              <span className="text-base font-medium text-white/90">Easily manage your agent skills with <span className="text-white font-mono font-bold">skx</span></span>
+            </div>
+            
+            <div className="flex items-center space-x-2 px-4 py-2 bg-black/40 rounded-lg border border-white/5 text-sm shadow-inner">
+               <span className="text-green-400 font-mono select-none">$</span>
+               <span className="font-mono text-white/90 whitespace-pre">skx install </span>
+               <TypingEffect words={examplePackages} />
             </div>
           </a>
         </div>
