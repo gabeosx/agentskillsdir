@@ -19,7 +19,7 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
     - [x] Verify the file is included in the build output.
 - [x] Task: Conductor - User Manual Verification 'Routing & Deep Linking Infrastructure' (Protocol in workflow.md)
 
-## Phase 2: Dynamic Metadata & Social Tags
+## Phase 2: Dynamic Metadata & Social Tags [checkpoint: f6bfcfa]
 - [x] Task: Install and Setup React Helmet (2a8ecde)
     - [x] Install `react-helmet-async`.
     - [x] Add `HelmetProvider` to `main.tsx`.
@@ -33,7 +33,7 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
 - [x] Task: Global Social Metadata (29f01ae)
     - [x] Update `index.html` with base Open Graph and Twitter tags.
     - [x] Add a high-quality branded social card image to `public/`.
-- [ ] Task: Conductor - User Manual Verification 'Dynamic Metadata & Social Tags' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Dynamic Metadata & Social Tags' (Protocol in workflow.md)
 
 ## Phase 3: Automated SEO Assets Generation
 - [ ] Task: Create Sitemap and Robots Script (TDD Red)
