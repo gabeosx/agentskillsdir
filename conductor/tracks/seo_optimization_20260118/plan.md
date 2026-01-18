@@ -9,11 +9,11 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
 - [x] Task: Implement Path-Based Routing (TDD Red) (6d66f50)
     - [x] Create `src/App.test.tsx` (or update existing) to test that navigating to `/skill/pdf` renders the PDF skill detail.
     - [x] Verify the test fails because routing is not yet implemented.
-- [ ] Task: Implement Path-Based Routing (TDD Green)
-    - [ ] Refactor `App.tsx` to use `Routes` and `Route`.
-    - [ ] Implement a route for `/skill/:packageName` that opens the Skill Modal.
-    - [ ] Ensure the home route `/` handles the search and list view correctly.
-    - [ ] Verify the tests pass.
+- [x] Task: Implement Path-Based Routing (TDD Green) (7406a41)
+    - [x] Refactor `App.tsx` to use `Routes` and `Route`.
+    - [x] Implement a route for `/skill/:packageName` that opens the Skill Modal.
+    - [x] Ensure the home route `/` handles the search and list view correctly.
+    - [x] Verify the tests pass.
 - [ ] Task: Configure Netlify Redirects
     - [ ] Create a `public/_redirects` file with the rule: `/* /index.html 200`.
     - [ ] Verify the file is included in the build output.
