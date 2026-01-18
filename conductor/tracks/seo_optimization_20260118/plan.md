@@ -20,9 +20,9 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
 - [x] Task: Conductor - User Manual Verification 'Routing & Deep Linking Infrastructure' (Protocol in workflow.md)
 
 ## Phase 2: Dynamic Metadata & Social Tags
-- [ ] Task: Install and Setup React Helmet
-    - [ ] Install `react-helmet-async`.
-    - [ ] Add `HelmetProvider` to `main.tsx`.
+- [x] Task: Install and Setup React Helmet (2a8ecde)
+    - [x] Install `react-helmet-async`.
+    - [x] Add `HelmetProvider` to `main.tsx`.
 - [ ] Task: Implement Dynamic Title and Meta Tags (TDD Red)
     - [ ] Create a test that asserts the `<title>` and `<meta name="description">` change when a skill is selected.
     - [ ] Verify the test fails.
