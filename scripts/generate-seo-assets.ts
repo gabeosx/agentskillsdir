@@ -28,7 +28,7 @@ export async function generateSitemap() {
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  ${skills.map((skill: any) => `
+  ${skills.map((skill: { packageName: string }) => `
   <url>
     <loc>${BASE_URL}/skill/${skill.packageName}</loc>
     <changefreq>weekly</changefreq>
