@@ -35,7 +35,15 @@ function TypingEffect({ words }: { words: string[] }) {
 
     if (subIndex === 0 && reverse) {
       setReverse(false);
-      setIndex((prev) => (prev + 1) % words.length);
+      // Randomly select the next index, ensuring it's different from the current one
+      setIndex((prev) => {
+        if (words.length <= 1) return 0;
+        let nextIndex = Math.floor(Math.random() * words.length);
+        while (nextIndex === prev) {
+          nextIndex = Math.floor(Math.random() * words.length);
+        }
+        return nextIndex;
+      });
       return;
     }
 
