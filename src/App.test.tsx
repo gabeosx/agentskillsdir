@@ -247,9 +247,8 @@ test('caches GitHub stars in localStorage', async () => {
 
 test('updates document title and meta description when skill is selected', async () => {
   // Helper to get meta description
-  const getMetaDescription = () => {
-    const meta = document.querySelector('meta[name="description"]');
-    return meta ? meta.getAttribute('content') : null;
+  const getMetaDescriptionTags = () => {
+    return document.querySelectorAll('meta[name="description"]');
   };
 
   render(
@@ -260,9 +259,6 @@ test('updates document title and meta description when skill is selected', async
     </HelmetProvider>
   );
 
-  // Initial state (assuming default is set in index.html, but Helmet might override or we check change)
-  // Let's just check that it changes when we select a skill.
-
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
   })
@@ -271,7 +267,11 @@ test('updates document title and meta description when skill is selected', async
 
   await waitFor(() => {
     expect(document.title).toBe('Weather Assistant | Agent Skills Directory');
-    expect(getMetaDescription()).toBe('Provides weather updates.');
+    const tags = getMetaDescriptionTags();
+    // We want exactly 1 tag, and it should have the correct content
+    // If Helmet is appending, we might see 2.
+    expect(tags.length).toBe(1); 
+    expect(tags[0].getAttribute('content')).toBe('Provides weather updates.');
   })
   
   // Close modal
@@ -279,7 +279,5 @@ test('updates document title and meta description when skill is selected', async
   
   await waitFor(() => {
     expect(document.title).toBe('Agent Skills Directory');
-    // We expect it to revert to default, whatever that is. 
-    // For now let's assume it reverts to something generic or the previous state.
   })
 })

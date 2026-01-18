@@ -1,4 +1,19 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/vitest';
+import { cleanup } from '@testing-library/react';
+import { afterEach } from 'vitest';
+
+// Runs a cleanup after each test case (e.g. clearing jsdom)
+afterEach(() => {
+  cleanup();
+});
+
+// Simulate index.html static tags
+const metaDescription = document.createElement('meta');
+metaDescription.name = 'description';
+metaDescription.content = 'The open standard for LLM extensions. Discover, share, and integrate skills for your AI agents.';
+metaDescription.setAttribute('data-rh', 'true');
+document.head.appendChild(metaDescription);
+
 
 // Mock localStorage if it's not available in the test environment
 if (typeof window !== 'undefined' && !window.localStorage) {
