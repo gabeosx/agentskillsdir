@@ -267,8 +267,9 @@ test('updates document title and meta description when skill is selected', async
     // React 19 might manage this differently in JSDOM, let's verify.
     // In JSDOM, React 19 should update the document.head directly.
     expect(tags.length).toBeGreaterThanOrEqual(1); // Maybe duplications in test env?
-    const content = Array.from(tags).find(t => t.getAttribute('content') === 'Provides weather updates.')
+    const content = Array.from(tags).find(t => t.getAttribute('content')?.includes('Provides weather updates.'))
     expect(content).toBeTruthy();
+    expect(content?.getAttribute('content')).toContain('Gemini, Claude, and Codex');
   })
   
   // Close modal
@@ -297,13 +298,15 @@ test('updates social meta tags (og and twitter) when skill is selected', async (
     const ogDesc = document.querySelector('meta[property="og:description"]');
     
     expect(ogTitle).toHaveAttribute('content', 'Weather Assistant | Agent Skills Directory');
-    expect(ogDesc).toHaveAttribute('content', 'Provides weather updates.');
+    expect(ogDesc?.getAttribute('content')).toContain('Provides weather updates.');
+    expect(ogDesc?.getAttribute('content')).toContain('Gemini, Claude, and Codex');
 
     // Check Twitter tags
     const twitterTitle = document.querySelector('meta[name="twitter:title"]');
     const twitterDesc = document.querySelector('meta[name="twitter:description"]');
     
     expect(twitterTitle).toHaveAttribute('content', 'Weather Assistant | Agent Skills Directory');
-    expect(twitterDesc).toHaveAttribute('content', 'Provides weather updates.');
+    expect(twitterDesc?.getAttribute('content')).toContain('Provides weather updates.');
+    expect(twitterDesc?.getAttribute('content')).toContain('Gemini, Claude, and Codex');
   })
 })

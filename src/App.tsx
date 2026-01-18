@@ -69,16 +69,16 @@ function SkillDirectory() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] font-sans selection:bg-white/20">
       <title>{selectedSkill ? `${selectedSkill.name} | Agent Skills Directory` : 'Agent Skills Directory'}</title>
-      <meta name="description" content={selectedSkill ? selectedSkill.description : "The open standard for LLM extensions. Discover, share, and integrate skills for your AI agents."} />
+      <meta name="description" content={selectedSkill ? `${selectedSkill.description} | Extend AI agents like Gemini, Claude, and Codex with this skill.` : "The open standard for LLM extensions. Discover, share, and integrate skills for Gemini, Claude, Codex, and more AI agents."} />
       
       {/* Open Graph */}
       <meta property="og:title" content={selectedSkill ? `${selectedSkill.name} | Agent Skills Directory` : "Agent Skills Directory"} />
-      <meta property="og:description" content={selectedSkill ? selectedSkill.description : "The open standard for LLM extensions. Discover, share, and integrate skills for your AI agents."} />
+      <meta property="og:description" content={selectedSkill ? `${selectedSkill.description} | Extend AI agents like Gemini, Claude, and Codex with this skill.` : "The open standard for LLM extensions. Discover, share, and integrate skills for Gemini, Claude, Codex, and more AI agents."} />
       <meta property="og:url" content={selectedSkill ? `https://skillindex.dev/skill/${selectedSkill.packageName}` : "https://skillindex.dev/"} />
       
       {/* Twitter */}
       <meta name="twitter:title" content={selectedSkill ? `${selectedSkill.name} | Agent Skills Directory` : "Agent Skills Directory"} />
-      <meta name="twitter:description" content={selectedSkill ? selectedSkill.description : "The open standard for LLM extensions. Discover, share, and integrate skills for your AI agents."} />
+      <meta name="twitter:description" content={selectedSkill ? `${selectedSkill.description} | Extend AI agents like Gemini, Claude, and Codex with this skill.` : "The open standard for LLM extensions. Discover, share, and integrate skills for Gemini, Claude, Codex, and more AI agents."} />
       
       <div className="max-w-5xl mx-auto px-6 pt-8 pb-20">
         <div className="flex justify-between items-center mb-8">
