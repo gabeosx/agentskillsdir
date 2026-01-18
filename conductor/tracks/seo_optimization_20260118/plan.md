@@ -40,9 +40,9 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
     - [x] Create a test for a new script `scripts/generate-seo-assets.ts`.
     - [x] Assert that it generates a valid `sitemap.xml` based on `public/skills.json`.
     - [x] Verify the test fails.
-- [ ] Task: Create Sitemap and Robots Script (TDD Green)
-    - [ ] Implement `scripts/generate-seo-assets.ts`.
-    - [ ] Ensure `robots.txt` is generated and points to the sitemap.
-    - [ ] Update `package.json` build script to run this before `vite build`.
-    - [ ] Verify the tests pass.
+- [x] Task: Create Sitemap and Robots Script (TDD Green) (0c8ffb4)
+    - [x] Implement `scripts/generate-seo-assets.ts`.
+    - [x] Ensure `robots.txt` is generated and points to the sitemap.
+    - [x] Update `package.json` build script to run this before `vite build`.
+    - [x] Verify the tests pass.
 - [ ] Task: Conductor - User Manual Verification 'Automated SEO Assets Generation' (Protocol in workflow.md)
