@@ -11,3 +11,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 - [x] **Track: update README.md to give an overview of the project, how to contribute, and link to the deployed version at skillindex.dev**
 *Link: [./tracks/update_readme_20260115/](./tracks/update_readme_20260115/)*
+
+---
+
+- [~] **Track: Optimize the website for SEO, including individual skill URLs, meta tags, social cards, sitemap, and robots.txt.**
+*Link: [./tracks/seo_optimization_20260118/](./tracks/seo_optimization_20260118/)*
