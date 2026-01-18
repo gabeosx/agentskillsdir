@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import App from './App'
-import { expect, test, vi, beforeEach } from 'vitest'
+import { expect, test, vi } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 
 const mockSkills = [

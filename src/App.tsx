@@ -20,36 +20,44 @@ function TypingEffect({ words }: { words: string[] }) {
     return () => clearTimeout(timeout2);
   }, [blink]);
 
+  // Reset if words change or index is out of bounds
+  // Adjust state during render to avoid cascading renders from effects
+  if (index >= words.length) {
+    setIndex(0);
+    setSubIndex(0);
+    setReverse(false);
+  }
+
   useEffect(() => {
-    if (index >= words.length) {
-      setIndex(0);
-      return;
-    }
+    // Prevent running if index is invalid (handled by render logic)
+    if (index >= words.length) return;
+
+    let timeout: NodeJS.Timeout;
 
     if (subIndex === words[index].length + 1 && !reverse) {
-      const timeout = setTimeout(() => {
+      // End of word, wait before deleting
+      timeout = setTimeout(() => {
         setReverse(true);
-      }, 2000); // Wait 2s at the end
-      return () => clearTimeout(timeout);
+      }, 2000);
+    } else if (subIndex === 0 && reverse) {
+      // End of deleting, switch word
+      timeout = setTimeout(() => {
+        setReverse(false);
+        setIndex((prev) => {
+          if (words.length <= 1) return 0;
+          let nextIndex = Math.floor(Math.random() * words.length);
+          while (nextIndex === prev) {
+            nextIndex = Math.floor(Math.random() * words.length);
+          }
+          return nextIndex;
+        });
+      }, 50); // Small delay to unblock
+    } else {
+      // Typing or deleting
+      timeout = setTimeout(() => {
+        setSubIndex((prev) => prev + (reverse ? -1 : 1));
+      }, reverse ? 40 : 100);
     }
-
-    if (subIndex === 0 && reverse) {
-      setReverse(false);
-      // Randomly select the next index, ensuring it's different from the current one
-      setIndex((prev) => {
-        if (words.length <= 1) return 0;
-        let nextIndex = Math.floor(Math.random() * words.length);
-        while (nextIndex === prev) {
-          nextIndex = Math.floor(Math.random() * words.length);
-        }
-        return nextIndex;
-      });
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, reverse ? 40 : 100); // Fixed speeds: 100ms for typing, 40ms for deleting
 
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse, words]);
@@ -62,7 +70,7 @@ function TypingEffect({ words }: { words: string[] }) {
       className="inline-block font-mono text-white/90 text-left"
       style={{ minWidth: `${maxLength + 1}ch` }}
     >
-      {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+      {`${words[index]?.substring(0, subIndex) || ''}${blink ? "|" : " "}`}
     </span>
   );
 }
