@@ -2,6 +2,7 @@ import { render, screen, fireEvent, waitFor, within } from '@testing-library/rea
 import App from './App'
 import { expect, test, vi, beforeEach } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -67,7 +68,7 @@ vi.stubGlobal('fetch', vi.fn((url: string | URL | Request) => {
 }));
 
 test('renders title and filters skills', async () => {
-  render(<MemoryRouter><App /></MemoryRouter>)
+  render(<HelmetProvider><MemoryRouter><App /></MemoryRouter></HelmetProvider>)
   
   // Wait for skills to load
   await waitFor(() => {
@@ -90,7 +91,7 @@ test('renders title and filters skills', async () => {
 })
 
 test('clicking a skill card opens the detail modal with correct info', async () => {
-  render(<MemoryRouter><App /></MemoryRouter>)
+  render(<HelmetProvider><MemoryRouter><App /></MemoryRouter></HelmetProvider>)
 
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
@@ -114,9 +115,11 @@ test('clicking a skill card opens the detail modal with correct info', async () 
 
 test('navigating to /skill/:packageName opens the skill modal', async () => {
   render(
-    <MemoryRouter initialEntries={['/skill/weather-assistant']}>
-      <App />
-    </MemoryRouter>
+    <HelmetProvider>
+      <MemoryRouter initialEntries={['/skill/weather-assistant']}>
+        <App />
+      </MemoryRouter>
+    </HelmetProvider>
   )
 
   await waitFor(() => {
@@ -127,7 +130,7 @@ test('navigating to /skill/:packageName opens the skill modal', async () => {
 })
 
 test('skill cards are accessible buttons', async () => {
-  render(<MemoryRouter><App /></MemoryRouter>)
+  render(<HelmetProvider><MemoryRouter><App /></MemoryRouter></HelmetProvider>)
   
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
@@ -141,7 +144,7 @@ test('skill cards are accessible buttons', async () => {
 })
 
 test('can close the detail modal', async () => {
-  render(<MemoryRouter><App /></MemoryRouter>)
+  render(<HelmetProvider><MemoryRouter><App /></MemoryRouter></HelmetProvider>)
 
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
@@ -179,7 +182,7 @@ test('handles GitHub API errors gracefully', async () => {
     });
   }));
 
-  render(<MemoryRouter><App /></MemoryRouter>)
+  render(<HelmetProvider><MemoryRouter><App /></MemoryRouter></HelmetProvider>)
 
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
@@ -212,7 +215,7 @@ test('caches GitHub stars in localStorage', async () => {
   });
   vi.stubGlobal('fetch', fetchMock);
 
-  render(<MemoryRouter><App /></MemoryRouter>)
+  render(<HelmetProvider><MemoryRouter><App /></MemoryRouter></HelmetProvider>)
 
   await waitFor(() => {
     expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
@@ -250,9 +253,11 @@ test('updates document title and meta description when skill is selected', async
   };
 
   render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
+    <HelmetProvider>
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    </HelmetProvider>
   );
 
   // Initial state (assuming default is set in index.html, but Helmet might override or we check change)

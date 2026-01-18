@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Search, X, Github, Star } from 'lucide-react';
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { SkillsListSchema } from './schemas/skill';
 import type { Skill } from './schemas/skill';
 import { filterSkills } from './utils/search';
@@ -68,6 +69,11 @@ function SkillDirectory() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] font-sans selection:bg-white/20">
+      <Helmet>
+        <title>{selectedSkill ? `${selectedSkill.name} | Agent Skills Directory` : 'Agent Skills Directory'}</title>
+        <meta name="description" content={selectedSkill ? selectedSkill.description : "The open standard for LLM extensions. Discover, share, and integrate skills for your AI agents."} />
+      </Helmet>
+      
       <div className="max-w-5xl mx-auto px-6 pt-8 pb-20">
         <div className="flex justify-between items-center mb-8">
           <a href="https://www.producthunt.com/products/agent-skills-directory-2?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-agent-skills-directory-2" target="_blank" rel="noopener noreferrer">
