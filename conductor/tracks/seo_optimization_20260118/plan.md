@@ -36,10 +36,10 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
 - [x] Task: Conductor - User Manual Verification 'Dynamic Metadata & Social Tags' (Protocol in workflow.md)
 
 ## Phase 3: Automated SEO Assets Generation
-- [ ] Task: Create Sitemap and Robots Script (TDD Red)
-    - [ ] Create a test for a new script `scripts/generate-seo-assets.ts`.
-    - [ ] Assert that it generates a valid `sitemap.xml` based on `public/skills.json`.
-    - [ ] Verify the test fails.
+- [x] Task: Create Sitemap and Robots Script (TDD Red) (9ecfd7e)
+    - [x] Create a test for a new script `scripts/generate-seo-assets.ts`.
+    - [x] Assert that it generates a valid `sitemap.xml` based on `public/skills.json`.
+    - [x] Verify the test fails.
 - [ ] Task: Create Sitemap and Robots Script (TDD Green)
     - [ ] Implement `scripts/generate-seo-assets.ts`.
     - [ ] Ensure `robots.txt` is generated and points to the sitemap.
