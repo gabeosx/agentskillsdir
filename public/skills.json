@@ -103,17 +103,6 @@
     ]
   },
   {
-    "name": "Template Skill",
-    "packageName": "template-skill",
-    "description": "A template for creating new skills in the Anthropics ecosystem.",
-    "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/template-skill",
-    "tags": [
-      "anthropic",
-      "template",
-      "example"
-    ]
-  },
-  {
     "name": "Webapp Testing",
     "packageName": "webapp-testing",
     "description": "Test local web applications using Playwright. Supports server management, UI interaction, screenshot capture, and DOM inspection.",
@@ -349,19 +338,6 @@
     ]
   },
   {
-    "name": "Claude Starter",
-    "packageName": "claude-starter",
-    "description": "A comprehensive framework for Claude Code with 40+ skills, meta-commands, and workflow automation. Acts as a project scaffold.",
-    "githubRepoUrl": "https://github.com/raintree-technology/claude-starter/blob/main",
-    "tags": [
-      "scaffolding",
-      "framework",
-      "configuration",
-      "productivity",
-      "agent-tools"
-    ]
-  },
-  {
     "name": "Move Code Quality",
     "packageName": "move-code-quality",
     "description": "Analyze Move language packages against the official Code Quality Checklist (Move 2024 Edition). Checks formatting, manifest, and best practices.",
@@ -424,32 +400,6 @@
       "sql",
       "read-only",
       "data-exploration"
-    ]
-  },
-  {
-    "name": "Claude Scientific Skills",
-    "packageName": "claude-scientific-skills",
-    "description": "A massive collection of 140+ scientific skills for bioinformatics, cheminformatics, drug discovery, clinical research, and more. Transforms Claude into an AI scientist.",
-    "githubRepoUrl": "https://github.com/K-Dense-AI/claude-scientific-skills/blob/main",
-    "tags": [
-      "science",
-      "research",
-      "bioinformatics",
-      "drug-discovery",
-      "multi-omics"
-    ]
-  },
-  {
-    "name": "Materials Simulation",
-    "packageName": "materials-simulation",
-    "description": "Perform computational materials science and numerical simulations. Includes stability analysis, integration, solvers, and simulation orchestration.",
-    "githubRepoUrl": "https://github.com/HeshamFS/materials-simulation-skills/blob/main",
-    "tags": [
-      "materials-science",
-      "simulation",
-      "numerical-methods",
-      "physics",
-      "computational-science"
     ]
   },
   {
@@ -596,19 +546,6 @@
     ]
   },
   {
-    "name": "Claude Ally Health",
-    "packageName": "claude-ally-health",
-    "description": "A personal health information system using file-based storage. Manages medical reports, radiation records, medications, and drug interactions via CLI commands.",
-    "githubRepoUrl": "https://github.com/huifer/Claude-Ally-Health/blob/main",
-    "tags": [
-      "health",
-      "medical-records",
-      "privacy",
-      "file-system",
-      "cli"
-    ]
-  },
-  {
     "name": "Git Pushing",
     "packageName": "git-pushing",
     "description": "Automate the git add, commit, and push workflow with conventional commit messages.",
@@ -671,19 +608,6 @@
       "root-cause-analysis",
       "software-engineering",
       "best-practices"
-    ]
-  },
-  {
-    "name": "Trailofbits Security",
-    "packageName": "trailofbits-security",
-    "description": "A suite of security-focused skills for smart contract auditing, code review, static analysis, and vulnerability detection.",
-    "githubRepoUrl": "https://github.com/trailofbits/skills/blob/main",
-    "tags": [
-      "security",
-      "auditing",
-      "smart-contracts",
-      "static-analysis",
-      "vulnerability-detection"
     ]
   },
   {
