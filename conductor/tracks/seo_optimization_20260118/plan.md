@@ -14,9 +14,9 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
     - [x] Implement a route for `/skill/:packageName` that opens the Skill Modal.
     - [x] Ensure the home route `/` handles the search and list view correctly.
     - [x] Verify the tests pass.
-- [ ] Task: Configure Netlify Redirects
-    - [ ] Create a `public/_redirects` file with the rule: `/* /index.html 200`.
-    - [ ] Verify the file is included in the build output.
+- [x] Task: Configure Netlify Redirects (934c240)
+    - [x] Create a `public/_redirects` file with the rule: `/* /index.html 200`.
+    - [x] Verify the file is included in the build output.
 - [ ] Task: Conductor - User Manual Verification 'Routing & Deep Linking Infrastructure' (Protocol in workflow.md)
 
 ## Phase 2: Dynamic Metadata & Social Tags
