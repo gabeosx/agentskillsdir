@@ -43,3 +43,5 @@ coverage
 
 # Gemini
 .gemini/settings.json
+
+tmp*
