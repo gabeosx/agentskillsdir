@@ -241,3 +241,40 @@ test('caches GitHub stars in localStorage', async () => {
   const secondCallCount = fetchMock.mock.calls.filter(call => call[0].toString().includes('api.github.com')).length
   expect(secondCallCount).toBe(firstCallCount)
 })
+
+test('updates document title and meta description when skill is selected', async () => {
+  // Helper to get meta description
+  const getMetaDescription = () => {
+    const meta = document.querySelector('meta[name="description"]');
+    return meta ? meta.getAttribute('content') : null;
+  };
+
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+
+  // Initial state (assuming default is set in index.html, but Helmet might override or we check change)
+  // Let's just check that it changes when we select a skill.
+
+  await waitFor(() => {
+    expect(screen.getByText('Weather Assistant')).toBeInTheDocument()
+  })
+
+  fireEvent.click(screen.getByText('Weather Assistant'))
+
+  await waitFor(() => {
+    expect(document.title).toBe('Weather Assistant | Agent Skills Directory');
+    expect(getMetaDescription()).toBe('Provides weather updates.');
+  })
+  
+  // Close modal
+  fireEvent.click(screen.getByRole('button', { name: /close modal/i }))
+  
+  await waitFor(() => {
+    expect(document.title).toBe('Agent Skills Directory');
+    // We expect it to revert to default, whatever that is. 
+    // For now let's assume it reverts to something generic or the previous state.
+  })
+})
