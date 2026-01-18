@@ -23,9 +23,9 @@ This plan outlines the steps to implement path-based routing, dynamic metadata, 
 - [x] Task: Install and Setup React Helmet (2a8ecde)
     - [x] Install `react-helmet-async`.
     - [x] Add `HelmetProvider` to `main.tsx`.
-- [ ] Task: Implement Dynamic Title and Meta Tags (TDD Red)
-    - [ ] Create a test that asserts the `<title>` and `<meta name="description">` change when a skill is selected.
-    - [ ] Verify the test fails.
+- [x] Task: Implement Dynamic Title and Meta Tags (TDD Red) (d504ca7)
+    - [x] Create a test that asserts the `<title>` and `<meta name="description">` change when a skill is selected.
+    - [x] Verify the test fails.
 - [ ] Task: Implement Dynamic Title and Meta Tags (TDD Green)
     - [ ] Integrate `Helmet` into the skill detail view/modal.
     - [ ] Use skill name for the title and description for the meta tag.
