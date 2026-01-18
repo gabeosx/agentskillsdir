@@ -38,6 +38,8 @@ describe('SEO Assets Generation', () => {
     vi.clearAllMocks();
     // Mock reading skills.json
     vi.mocked(fs.readFileSync).mockReturnValue(JSON.stringify(mockSkills));
+    // Mock existsSync to return true
+    vi.mocked(fs.existsSync).mockReturnValue(true);
   });
 
   test('generateSitemap creates a valid sitemap.xml', async () => {

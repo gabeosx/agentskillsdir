@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsx scripts/generate-seo-assets.ts && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "validate-skills": "tsx scripts/validate-skills.ts"
+    "validate-skills": "tsx scripts/validate-skills.ts",
+    "generate-seo": "tsx scripts/generate-seo-assets.ts"
   },
   "dependencies": {
     "lucide-react": "^0.562.0",
