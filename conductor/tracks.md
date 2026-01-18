@@ -16,3 +16,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 - [x] **Track: Optimize the website for SEO, including individual skill URLs, meta tags, social cards, sitemap, and robots.txt.**
 *Link: [./archive/seo_optimization_20260118/](./archive/seo_optimization_20260118/)*
+---
+
+- [x] **Track: Import and validate skills from tmp.csv**
+*Link: [./tracks/import_skills_20260118/](./tracks/import_skills_20260118/)*

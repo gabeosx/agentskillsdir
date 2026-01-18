@@ -2,64 +2,714 @@
   {
     "name": "Apple Container Skill",
     "packageName": "apple-container-skill",
-    "description": "Enables agents to interact with the Apple Container CLI to manage containers, images, volumes, and networks on macOS.",
+    "description": "Interact with the Apple Container CLI to manage containers, images, volumes, networks, and system services on macOS.",
     "githubRepoUrl": "https://github.com/gabeosx/agent-skills/tree/main/skills/apple-container-skill",
-    "tags": ["macos", "container", "cli", "system-management"]
+    "tags": [
+      "macos",
+      "container",
+      "cli",
+      "virtualization",
+      "system-management"
+    ]
   },
   {
     "name": "DevContainer Helper",
     "packageName": "devcontainer-helper",
-    "description": "Create, configure, and manage devcontainer.json environments.",
+    "description": "Create and manage `devcontainer.json` files for consistent development environments. Supports configurations for Dockerfiles, Docker Compose, and pre-built images.",
     "githubRepoUrl": "https://github.com/gabeosx/agent-skills/tree/main/skills/devcontainer-helper",
-    "tags": ["devcontainer", "docker", "configuration", "development"]
+    "tags": [
+      "devcontainer",
+      "configuration",
+      "docker",
+      "development-environment",
+      "vscode"
+    ]
   },
   {
     "name": "PDF Skill",
     "packageName": "pdf",
-    "description": "Tools for extracting text and data from PDF files.",
+    "description": "Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/pdf",
-    "tags": ["anthropic", "pdf", "document-processing"]
+    "tags": [
+      "pdf",
+      "document-processing",
+      "python",
+      "form-filling",
+      "text-extraction"
+    ]
   },
   {
     "name": "DOCX Skill",
     "packageName": "docx",
-    "description": "Tools for reading and writing DOCX files.",
+    "description": "Create, edit, and analyze Word documents (.docx) with support for tracked changes, comments, and formatting preservation.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/docx",
-    "tags": ["anthropic", "docx", "document-processing"]
+    "tags": [
+      "docx",
+      "word",
+      "document-processing",
+      "ooxml",
+      "office"
+    ]
   },
   {
     "name": "PPTX Skill",
     "packageName": "pptx",
-    "description": "Tools for reading and writing PPTX files.",
+    "description": "Create, edit, and analyze PowerPoint presentations (.pptx). Supports layout manipulation, slide creation from HTML, and content extraction.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/pptx",
-    "tags": ["anthropic", "pptx", "presentation"]
+    "tags": [
+      "pptx",
+      "powerpoint",
+      "presentation",
+      "slide-generation",
+      "office"
+    ]
   },
   {
     "name": "XLSX Skill",
     "packageName": "xlsx",
-    "description": "Tools for reading and writing Excel (XLSX) files.",
+    "description": "Create, edit, and analyze Excel spreadsheets (.xlsx) with support for formulas, formatting, and data visualization. Includes formula recalculation capabilities.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
-    "tags": ["anthropic", "excel", "spreadsheet", "data-analysis"]
+    "tags": [
+      "xlsx",
+      "excel",
+      "spreadsheet",
+      "data-analysis",
+      "formulas"
+    ]
   },
   {
     "name": "Skill Creator",
     "packageName": "skill-creator",
-    "description": "A meta-skill for creating new Agent Skills.",
+    "description": "A meta-skill for creating new Agent Skills. Provides templates and guidance for structure, metadata, and resource organization.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
-    "tags": ["anthropic", "meta", "development"]
+    "tags": [
+      "meta-skill",
+      "development",
+      "scaffolding",
+      "agent-capabilities"
+    ]
   },
   {
     "name": "Slack GIF Creator",
     "packageName": "slack-gif-creator",
-    "description": "A fun skill to create GIFs for Slack.",
+    "description": "Create animated GIFs optimized for Slack (emojis and messages) using Python. Includes tools for frame composition, validation, and file size optimization.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator",
-    "tags": ["anthropic", "slack", "media"]
+    "tags": [
+      "slack",
+      "gif",
+      "animation",
+      "image-processing",
+      "media"
+    ]
   },
   {
     "name": "Template Skill",
     "packageName": "template-skill",
     "description": "A template for creating new skills in the Anthropics ecosystem.",
     "githubRepoUrl": "https://github.com/anthropics/skills/tree/main/skills/template-skill",
-    "tags": ["anthropic", "template", "example"]
+    "tags": [
+      "anthropic",
+      "template",
+      "example"
+    ]
+  },
+  {
+    "name": "Webapp Testing",
+    "packageName": "webapp-testing",
+    "description": "Test local web applications using Playwright. Supports server management, UI interaction, screenshot capture, and DOM inspection.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/blob/main/skills/webapp-testing",
+    "tags": [
+      "testing",
+      "playwright",
+      "web-automation",
+      "e2e",
+      "browser"
+    ]
+  },
+  {
+    "name": "Internal Comms",
+    "packageName": "internal-comms",
+    "description": "Draft internal communications (3P updates, newsletters, FAQs, status reports) using specific company formats and templates.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/blob/main/skills/internal-comms",
+    "tags": [
+      "internal-communications",
+      "writing-assistant",
+      "templates",
+      "status-updates",
+      "corporate"
+    ]
+  },
+  {
+    "name": "Hugging Face Cli",
+    "packageName": "hugging-face-cli",
+    "description": "Execute Hugging Face Hub operations via the `hf` CLI. Download/upload models and datasets, manage repositories, and run cloud compute jobs.",
+    "githubRepoUrl": "https://github.com/huggingface/skills/blob/main/skills/hugging-face-cli",
+    "tags": [
+      "hugging-face",
+      "cli",
+      "model-management",
+      "cloud-compute",
+      "hub-operations"
+    ]
+  },
+  {
+    "name": "Hugging Face Datasets",
+    "packageName": "hugging-face-datasets",
+    "description": "Create and manage datasets on Hugging Face Hub. Supports SQL-based querying, data transformation, and diverse dataset templates (Chat, QA, Tabular).",
+    "githubRepoUrl": "https://github.com/huggingface/skills/blob/main/skills/hugging-face-datasets",
+    "tags": [
+      "hugging-face",
+      "datasets",
+      "sql",
+      "data-management",
+      "etl"
+    ]
+  },
+  {
+    "name": "Hugging Face Model Trainer",
+    "packageName": "hugging-face-model-trainer",
+    "description": "Train or fine-tune language models on Hugging Face Jobs using TRL (SFT, DPO, GRPO). Supports cloud GPU training and GGUF conversion.",
+    "githubRepoUrl": "https://github.com/huggingface/skills/blob/main/skills/hugging-face-model-trainer",
+    "tags": [
+      "hugging-face",
+      "training",
+      "fine-tuning",
+      "trl",
+      "gpu",
+      "sft",
+      "dpo"
+    ]
+  },
+  {
+    "name": "Hugging Face Paper Publisher",
+    "packageName": "hugging-face-paper-publisher",
+    "description": "Publish and manage research papers on Hugging Face Hub. Index from arXiv, link to models/datasets, and claim authorship.",
+    "githubRepoUrl": "https://github.com/huggingface/skills/blob/main/skills/hugging-face-paper-publisher",
+    "tags": [
+      "hugging-face",
+      "research",
+      "publishing",
+      "arxiv",
+      "citations"
+    ]
+  },
+  {
+    "name": "Prompt Optimizer",
+    "packageName": "prompt-optimizer",
+    "description": "Transform vague user prompts into high-quality, clear, and effective instructions optimized for AI models using prompt engineering best practices.",
+    "githubRepoUrl": "https://github.com/hikanner/agent-skills/blob/main/prompt-optimizer",
+    "tags": [
+      "prompt-engineering",
+      "optimization",
+      "ai-interaction",
+      "instruction-tuning"
+    ]
+  },
+  {
+    "name": "Jta",
+    "packageName": "jta",
+    "description": "AI-powered JSON internationalization (i18n) file translator. Supports incremental updates, 27+ languages, and terminology management.",
+    "githubRepoUrl": "https://github.com/hikanner/agent-skills/blob/main/jta",
+    "tags": [
+      "i18n",
+      "translation",
+      "json",
+      "localization",
+      "ai-powered"
+    ]
+  },
+  {
+    "name": "Appinsights Instrumentation",
+    "packageName": "appinsights-instrumentation",
+    "description": "Instrument web applications (ASP.NET Core, Node.js) to send telemetry data to Azure Application Insights.",
+    "githubRepoUrl": "https://github.com/github/awesome-copilot/blob/main/skills/appinsights-instrumentation",
+    "tags": [
+      "azure",
+      "app-insights",
+      "telemetry",
+      "monitoring",
+      "observability"
+    ]
+  },
+  {
+    "name": "Azure Role Selector",
+    "packageName": "azure-role-selector",
+    "description": "Guide users in selecting and assigning the least-privilege Azure roles for identities based on desired permissions.",
+    "githubRepoUrl": "https://github.com/github/awesome-copilot/blob/main/skills/azure-role-selector",
+    "tags": [
+      "azure",
+      "security",
+      "iam",
+      "roles",
+      "governance"
+    ]
+  },
+  {
+    "name": "Nuget Manager",
+    "packageName": "nuget-manager",
+    "description": "Manage NuGet packages in .NET projects using the `dotnet` CLI. Enforces verification and restoration workflows for version updates.",
+    "githubRepoUrl": "https://github.com/github/awesome-copilot/blob/main/skills/nuget-manager",
+    "tags": [
+      "dotnet",
+      "nuget",
+      "package-management",
+      "cli",
+      "dependency-management"
+    ]
+  },
+  {
+    "name": "Project Memory",
+    "packageName": "project-memory",
+    "description": "Maintain structured project documentation (bugs, decisions, key facts) in `docs/project_notes/` to preserve institutional knowledge across sessions.",
+    "githubRepoUrl": "https://github.com/SpillwaveSolutions/project-memory/blob/main",
+    "tags": [
+      "documentation",
+      "project-management",
+      "architecture",
+      "memory",
+      "knowledge-base"
+    ]
+  },
+  {
+    "name": "Things3 Agent Skill",
+    "packageName": "things3-agent-skill",
+    "description": "Manage Things 3 tasks, projects, and areas via a local CLI. Supports creating, updating, listing, and searching to-dos on macOS.",
+    "githubRepoUrl": "https://github.com/eugenepyvovarov/things3-agent-skill/blob/main",
+    "tags": [
+      "productivity",
+      "task-management",
+      "cli",
+      "macos",
+      "things3"
+    ]
+  },
+  {
+    "name": "Web Artifacts Builder",
+    "packageName": "web-artifacts-builder",
+    "description": "Build complex, multi-component HTML/React artifacts using Tailwind CSS and shadcn/ui. Bundles code into a single self-contained HTML file.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/blob/main/skills/web-artifacts-builder",
+    "tags": [
+      "frontend",
+      "react",
+      "artifacts",
+      "web-development",
+      "prototyping"
+    ]
+  },
+  {
+    "name": "Test Driven Development",
+    "packageName": "test-driven-development",
+    "description": "Guide for implementing Test-Driven Development (TDD) workflows: Red (write failing test) -> Green (write code) -> Refactor.",
+    "githubRepoUrl": "https://github.com/obra/superpowers/blob/main/skills/test-driven-development",
+    "tags": [
+      "tdd",
+      "testing",
+      "best-practices",
+      "workflow",
+      "quality-assurance"
+    ]
+  },
+  {
+    "name": "Using Git Worktrees",
+    "packageName": "using-git-worktrees",
+    "description": "Create isolated Git worktrees for parallel feature development without switching branches in the main workspace.",
+    "githubRepoUrl": "https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees",
+    "tags": [
+      "git",
+      "workflow",
+      "productivity",
+      "version-control",
+      "development-environment"
+    ]
+  },
+  {
+    "name": "Finishing A Development Branch",
+    "packageName": "finishing-a-development-branch",
+    "description": "Standardized workflow for completing feature branches: verify tests, merge/PR options, and cleanup worktrees.",
+    "githubRepoUrl": "https://github.com/obra/superpowers/blob/main/skills/finishing-a-development-branch",
+    "tags": [
+      "git",
+      "workflow",
+      "pull-request",
+      "cleanup",
+      "release-management"
+    ]
+  },
+  {
+    "name": "Pypict",
+    "packageName": "pypict",
+    "description": "Design comprehensive pairwise test cases using PICT (Pairwise Independent Combinatorial Testing) for requirements or code analysis.",
+    "githubRepoUrl": "https://github.com/omkamal/pypict-claude-skill/blob/main",
+    "tags": [
+      "testing",
+      "combinatorial-testing",
+      "test-design",
+      "qa",
+      "pict"
+    ]
+  },
+  {
+    "name": "Claude Starter",
+    "packageName": "claude-starter",
+    "description": "A comprehensive framework for Claude Code with 40+ skills, meta-commands, and workflow automation. Acts as a project scaffold.",
+    "githubRepoUrl": "https://github.com/raintree-technology/claude-starter/blob/main",
+    "tags": [
+      "scaffolding",
+      "framework",
+      "configuration",
+      "productivity",
+      "agent-tools"
+    ]
+  },
+  {
+    "name": "Move Code Quality",
+    "packageName": "move-code-quality",
+    "description": "Analyze Move language packages against the official Code Quality Checklist (Move 2024 Edition). Checks formatting, manifest, and best practices.",
+    "githubRepoUrl": "https://github.com/1NickPappas/move-code-quality-skill/blob/main",
+    "tags": [
+      "move-language",
+      "blockchain",
+      "code-quality",
+      "static-analysis",
+      "security"
+    ]
+  },
+  {
+    "name": "Plugin Authoring",
+    "packageName": "plugin-authoring",
+    "description": "Guide for creating, validating, and debugging Claude Code plugins. Provides schemas, templates, and best practices for plugin development.",
+    "githubRepoUrl": "https://github.com/ivan-magda/claude-code-plugin-template/blob/main/plugins/plugin-development/skills/plugin-authoring",
+    "tags": [
+      "plugin-development",
+      "claude-code",
+      "tooling",
+      "meta-development",
+      "validation"
+    ]
+  },
+  {
+    "name": "Mcp Builder",
+    "packageName": "mcp-builder",
+    "description": "Guide for creating high-quality Model Context Protocol (MCP) servers in Python or TypeScript. Covers design, implementation, and evaluation best practices.",
+    "githubRepoUrl": "https://github.com/anthropics/skills/blob/main/skills/mcp-builder",
+    "tags": [
+      "mcp",
+      "protocol",
+      "server-development",
+      "llm-integration",
+      "tools"
+    ]
+  },
+  {
+    "name": "Csv Data Summarizer",
+    "packageName": "csv-data-summarizer",
+    "description": "Automatically analyze CSV files to generate comprehensive summaries, statistical insights, and relevant visualizations without user prompting.",
+    "githubRepoUrl": "https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill/blob/main",
+    "tags": [
+      "data-analysis",
+      "csv",
+      "visualization",
+      "statistics",
+      "pandas"
+    ]
+  },
+  {
+    "name": "Postgres",
+    "packageName": "postgres",
+    "description": "Execute safe, read-only SQL queries against PostgreSQL databases. Auto-selects databases based on description and blocks write operations.",
+    "githubRepoUrl": "https://github.com/sanjay3290/ai-skills/blob/main/skills/postgres",
+    "tags": [
+      "database",
+      "postgresql",
+      "sql",
+      "read-only",
+      "data-exploration"
+    ]
+  },
+  {
+    "name": "Claude Scientific Skills",
+    "packageName": "claude-scientific-skills",
+    "description": "A massive collection of 140+ scientific skills for bioinformatics, cheminformatics, drug discovery, clinical research, and more. Transforms Claude into an AI scientist.",
+    "githubRepoUrl": "https://github.com/K-Dense-AI/claude-scientific-skills/blob/main",
+    "tags": [
+      "science",
+      "research",
+      "bioinformatics",
+      "drug-discovery",
+      "multi-omics"
+    ]
+  },
+  {
+    "name": "Materials Simulation",
+    "packageName": "materials-simulation",
+    "description": "Perform computational materials science and numerical simulations. Includes stability analysis, integration, solvers, and simulation orchestration.",
+    "githubRepoUrl": "https://github.com/HeshamFS/materials-simulation-skills/blob/main",
+    "tags": [
+      "materials-science",
+      "simulation",
+      "numerical-methods",
+      "physics",
+      "computational-science"
+    ]
+  },
+  {
+    "name": "Deep Research",
+    "packageName": "deep-research",
+    "description": "Execute autonomous, multi-step research tasks using Google Gemini Deep Research Agent. Generates detailed, cited reports on complex topics.",
+    "githubRepoUrl": "https://github.com/sanjay3290/ai-skills/blob/main/skills/deep-research",
+    "tags": [
+      "research",
+      "autonomous-agent",
+      "gemini",
+      "market-analysis",
+      "deep-dive"
+    ]
+  },
+  {
+    "name": "Article Extractor",
+    "packageName": "article-extractor",
+    "description": "Extract clean, readable text from web articles and blog posts, removing ads and clutter. Supports multiple extraction methods (reader, trafilatura).",
+    "githubRepoUrl": "https://github.com/michalparkola/tapestry-skills-for-claude-code/blob/main/article-extractor",
+    "tags": [
+      "web-scraping",
+      "content-extraction",
+      "article-parsing",
+      "readability",
+      "text-processing"
+    ]
+  },
+  {
+    "name": "Content Research Writer",
+    "packageName": "content-research-writer",
+    "description": "Collaborative writing partner for researching, outlining, drafting, and refining high-quality content. Provides real-time feedback and hook improvements.",
+    "githubRepoUrl": "https://github.com/ComposioHQ/awesome-claude-skills/blob/master/content-research-writer",
+    "tags": [
+      "writing",
+      "content-creation",
+      "research",
+      "editing",
+      "collaboration"
+    ]
+  },
+  {
+    "name": "Brainstorming",
+    "packageName": "brainstorming",
+    "description": "Turn vague ideas into fully formed designs and specs through structured dialogue. Explores requirements, constraints, and trade-offs before implementation.",
+    "githubRepoUrl": "https://github.com/obra/superpowers/blob/main/skills/brainstorming",
+    "tags": [
+      "design",
+      "architecture",
+      "requirements-gathering",
+      "ideation",
+      "planning"
+    ]
+  },
+  {
+    "name": "Family History Research",
+    "packageName": "family-history-research",
+    "description": "Plan and organize genealogy research projects. Creates structured research plans, citation guides, and evidence analysis reports before executing searches.",
+    "githubRepoUrl": "https://github.com/emaynard/claude-family-history-research-skill/blob/main",
+    "tags": [
+      "genealogy",
+      "research-planning",
+      "history",
+      "citation",
+      "evidence-analysis"
+    ]
+  },
+  {
+    "name": "Tapestry",
+    "packageName": "tapestry",
+    "description": "Orchestrate content extraction and action planning. Detects content type (YouTube, article, PDF), extracts it, and generates a Ship-Learn-Next plan automatically.",
+    "githubRepoUrl": "https://github.com/michalparkola/tapestry-skills-for-claude-code/blob/main/tapestry",
+    "tags": [
+      "workflow",
+      "content-extraction",
+      "planning",
+      "automation",
+      "learning"
+    ]
+  },
+  {
+    "name": "Ship Learn Next",
+    "packageName": "ship-learn-next",
+    "description": "Transform educational content into actionable 'Ship-Learn-Next' quests. Creates 5-rep progression plans focusing on shippable outcomes and reflection.",
+    "githubRepoUrl": "https://github.com/michalparkola/tapestry-skills-for-claude-code/blob/main/ship-learn-next",
+    "tags": [
+      "learning",
+      "action-planning",
+      "productivity",
+      "self-improvement",
+      "framework"
+    ]
+  },
+  {
+    "name": "Youtube Transcript",
+    "packageName": "youtube-transcript",
+    "description": "Download YouTube video transcripts (manual or auto-generated). Supports fallback to Whisper transcription for videos without subtitles.",
+    "githubRepoUrl": "https://github.com/michalparkola/tapestry-skills-for-claude-code/blob/main/youtube-transcript",
+    "tags": [
+      "youtube",
+      "transcript",
+      "download",
+      "whisper",
+      "video-processing"
+    ]
+  },
+  {
+    "name": "Video Downloader",
+    "packageName": "video-downloader",
+    "description": "Download YouTube videos with customizable quality (1080p, 4k, etc.) and formats (mp4, webm, mp3) using yt-dlp.",
+    "githubRepoUrl": "https://github.com/ComposioHQ/awesome-claude-skills/blob/master/video-downloader",
+    "tags": [
+      "youtube",
+      "download",
+      "media",
+      "video",
+      "audio"
+    ]
+  },
+  {
+    "name": "Image Enhancer",
+    "packageName": "image-enhancer",
+    "description": "Improve image quality by upscaling resolution, sharpening details, and reducing artifacts. Optimized for screenshots, documents, and social media.",
+    "githubRepoUrl": "https://github.com/ComposioHQ/awesome-claude-skills/blob/master/image-enhancer",
+    "tags": [
+      "image-processing",
+      "upscaling",
+      "enhancement",
+      "quality",
+      "screenshots"
+    ]
+  },
+  {
+    "name": "Imagen",
+    "packageName": "imagen",
+    "description": "Generate images using Google Gemini's image generation model (gemini-3-pro-image-preview). Creates UI mockups, diagrams, and illustrations.",
+    "githubRepoUrl": "https://github.com/sanjay3290/ai-skills/blob/main/skills/imagen",
+    "tags": [
+      "image-generation",
+      "gemini",
+      "ai-art",
+      "visuals",
+      "mockups"
+    ]
+  },
+  {
+    "name": "Claude Ally Health",
+    "packageName": "claude-ally-health",
+    "description": "A personal health information system using file-based storage. Manages medical reports, radiation records, medications, and drug interactions via CLI commands.",
+    "githubRepoUrl": "https://github.com/huifer/Claude-Ally-Health/blob/main",
+    "tags": [
+      "health",
+      "medical-records",
+      "privacy",
+      "file-system",
+      "cli"
+    ]
+  },
+  {
+    "name": "Git Pushing",
+    "packageName": "git-pushing",
+    "description": "Automate the git add, commit, and push workflow with conventional commit messages.",
+    "githubRepoUrl": "https://github.com/mhattingpete/claude-skills-marketplace/blob/main/engineering-workflow-plugin/skills/git-pushing",
+    "tags": [
+      "git",
+      "workflow",
+      "automation",
+      "commit",
+      "productivity"
+    ]
+  },
+  {
+    "name": "Meeting Insights Analyzer",
+    "packageName": "meeting-insights-analyzer",
+    "description": "Analyze meeting transcripts to uncover communication patterns, conflict avoidance, speaking ratios, and leadership style. Provides actionable feedback.",
+    "githubRepoUrl": "https://github.com/ComposioHQ/awesome-claude-skills/blob/master/meeting-insights-analyzer",
+    "tags": [
+      "meetings",
+      "analysis",
+      "communication",
+      "leadership",
+      "insights"
+    ]
+  },
+  {
+    "name": "Review Implementing",
+    "packageName": "review-implementing",
+    "description": "Systematically process code review feedback by creating and executing a todo list of changes. Ensures all comments are addressed.",
+    "githubRepoUrl": "https://github.com/mhattingpete/claude-skills-marketplace/blob/main/engineering-workflow-plugin/skills/review-implementing",
+    "tags": [
+      "code-review",
+      "workflow",
+      "git",
+      "productivity",
+      "development"
+    ]
+  },
+  {
+    "name": "Test Fixing",
+    "packageName": "test-fixing",
+    "description": "Systematically fix failing tests by analyzing errors, grouping them by type/module, and resolving them in dependency order (infrastructure -> API -> logic).",
+    "githubRepoUrl": "https://github.com/mhattingpete/claude-skills-marketplace/blob/main/engineering-workflow-plugin/skills/test-fixing",
+    "tags": [
+      "testing",
+      "debugging",
+      "ci-cd",
+      "python",
+      "automation"
+    ]
+  },
+  {
+    "name": "Systematic Debugging",
+    "packageName": "systematic-debugging",
+    "description": "A disciplined 4-phase debugging process: Root Cause Investigation, Pattern Analysis, Hypothesis Testing, and Implementation. Discourages random fixes.",
+    "githubRepoUrl": "https://github.com/obra/superpowers/blob/main/skills/systematic-debugging",
+    "tags": [
+      "debugging",
+      "troubleshooting",
+      "root-cause-analysis",
+      "software-engineering",
+      "best-practices"
+    ]
+  },
+  {
+    "name": "Trailofbits Security",
+    "packageName": "trailofbits-security",
+    "description": "A suite of security-focused skills for smart contract auditing, code review, static analysis, and vulnerability detection.",
+    "githubRepoUrl": "https://github.com/trailofbits/skills/blob/main",
+    "tags": [
+      "security",
+      "auditing",
+      "smart-contracts",
+      "static-analysis",
+      "vulnerability-detection"
+    ]
+  },
+  {
+    "name": "File Organizer",
+    "packageName": "file-organizer",
+    "description": "Intelligently organize files and folders based on context, type, and date. Finds duplicates, suggests structures, and automates cleanup.",
+    "githubRepoUrl": "https://github.com/ComposioHQ/awesome-claude-skills/blob/master/file-organizer",
+    "tags": [
+      "productivity",
+      "organization",
+      "file-management",
+      "automation",
+      "cleanup"
+    ]
+  },
+  {
+    "name": "Invoice Organizer",
+    "packageName": "invoice-organizer",
+    "description": "Automate invoice and receipt organization for tax preparation. Extracts data, renames files consistently, and sorts into categories.",
+    "githubRepoUrl": "https://github.com/ComposioHQ/awesome-claude-skills/blob/master/invoice-organizer",
+    "tags": [
+      "productivity",
+      "finance",
+      "organization",
+      "automation",
+      "ocr"
+    ]
   }
 ]
