@@ -635,5 +635,18 @@
       "automation",
       "ocr"
     ]
+  },
+  {
+    "name": "UX Designer",
+    "packageName": "ux-designer",
+    "description": "Expert UX/UI design assistant based on the \"Refactoring UI\" philosophy (by Wathan & Schoger). Enforces logic-based design, strict hierarchy, and \"buildable\" visual systems. Use for converting requirements into professional, high-fidelity specs.",
+    "githubRepoUrl": "https://github.com/gabeosx/agent-skills/tree/main/skills/ux-designer",
+    "tags": [
+      "ux-designer",
+      "ui",
+      "design",
+      "refactoring-ui",
+      "visual-systems"
+    ]
   }
 ]
